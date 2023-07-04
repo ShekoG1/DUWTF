@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro&family=Comfortaa&display=swap');
+
+:root {
+	--global--color-red-bland: #FA535D;
+    --global--color-red-bright: #FF000F;
+
+    --global--color-blue-bland: #5195FF;
+    --global--color-blue-bright: #0062ff;
+
+    --global--color-blue-dull: #A6B6F7;
+    --global--color-blue-less-dull: #466BFF;
+
+    --global--color-orange-bland: #ffc25f;
+    --global--color-orange-bright: #FB9B00;
+
+    --global--color-orange-bland: #ffc25f;
+    --global--color-orange-bright: #FB9B00;
+
+    --global--color-orange-bland: #ffc25f;
+    --global--color-orange-bright: #FB9B00;
+    
+    --global--color-pink-bland: #E680E8;
+    --global--color-pink-bright: #fb06ff;
+}
+
+body{
+    font-family: 'Anonymous Pro', monospace;
+    font-family: 'Comfortaa', cursive;
+}
+/* Navigation */
+#nav{
+    display: flex;
+    overflow: auto;
+    transition: all 1s;
+    white-space: nowrap;
+    width: 100% !important;
+    gap: 5%;
+}
+.nav-item{
+    display: inline-block;
+    transition: all 1s;
+}
+
+.read-more{
+    border: none;
+    background-color: white;
+    font-weight: bolder;
+    color: blue;
+}
+/* Animations */
+@keyframes jiggle {
+    20%{
+        transform: rotate(5deg);
+    }
+
+    40%{
+        transform: rotate(-5deg);
+    }
+    60%{
+        transform: rotate(5deg);
+    }
+    80%{
+        transform: rotate(-5deg);
+    }
+}

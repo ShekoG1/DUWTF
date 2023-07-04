@@ -1,0 +1,91 @@
+/* Imports */
+@import url("globals.css");
+
+/* Body */
+.container-fluid{
+    min-height: 100vh;
+    padding: 50px;
+}
+/* Navigation */
+#nav{
+    background-color: white;
+}
+.nav-item{
+    color: black;
+    text-decoration: none;
+    border: 1px solid white;
+    font-size: 2.5rem;
+}
+.nav-item:hover{
+    border-bottom-color: black;
+    color: black;
+}
+/* Sticky Notes */
+#sticky-note-container{
+    gap: 30px;
+    justify-content: center;
+}
+.sticky-note{
+    color: white;
+    padding: 10px;
+    height: 30rem;
+}
+.sticky-note:hover{
+    animation: jiggle forwards 2s;
+}
+.sticky-note:nth-child(1){
+    background-color: var(--global--color-red-bland);
+}
+.sticky-note:nth-child(2){
+    background-color: var(--global--color-blue-bland);
+}
+.sticky-note:nth-child(3){
+    background-color: var(--global--color-blue-dull);
+}
+.sticky-note:nth-child(4){
+    background-color: var(--global--color-orange-bland);
+}
+.number-container{
+    width: 100%;
+}
+.numbering{
+    padding: 5px;
+    border: 2px solid white;
+    border-radius: 100%;
+    max-width: 150px;
+    width:100px;
+    min-width: 20px;
+    text-align: center;
+    font-size: 2.5rem;
+}
+.blog-title{
+    margin-top: 25%;
+}
+.blog-title h5{
+    font-size: 30px;
+}
+
+/* About */
+#about{
+    font-size: 2.5rem;
+    padding: 20px;
+    white-space: normal;
+}
+/* Starting at */
+#started-at{
+    justify-self: right;
+    display: flex;
+    width: 10rem;
+    height: 10rem;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 100%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    right: 20%;
+    top: 70%;
+}
