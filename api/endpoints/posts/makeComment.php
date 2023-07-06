@@ -25,6 +25,8 @@
         throwError("Post Id must be a numeric value");
     }
 
+    $comment = strip_tags($comment);
+
     $userId = trim($userId);
     $postId = trim($postId);
     $comment = trim($comment);

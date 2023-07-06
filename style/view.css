@@ -1,0 +1,14 @@
+#make-comment{
+    display:flex;
+    gap: 10px;
+}
+#comment{
+    background-color: white;
+    color: black;
+    border:  2px solid black;
+    border-radius: 20px;
+}
+#make-comment button{
+    border: none;
+    background-color: white;
+}

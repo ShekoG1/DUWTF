@@ -7,7 +7,6 @@
     // TEST
     $userId = 1;
     // END TEST
-
     
     // Get Post
     $postCurl = curl_init();
@@ -101,6 +100,8 @@ $postContent = $postResponsedata[0]->post_content;
     <!-- STYLE -->
     <link rel="stylesheet" href="./../../style/globals.css">
     <link rel="stylesheet" href="./../../style/view.css">
+    <!-- JAVASCRIPT -->
+    <link rel="stylesheet" href="./../../js/globals.js">
 </head>
 <body>
     <?php
@@ -136,10 +137,29 @@ $postContent = $postResponsedata[0]->post_content;
                     <input type="text" placeholder="Leave your comment here..." id="comment">
                     <button onclick="makeComment()">
                         <i>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16"> <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"/> </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" class="bi bi-send" viewBox="0 0 16 16"> <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"/> </svg>
                         </i>
                     </button>
                 </div>
+                <?php
+                    $curl = curl_init();
+
+                    curl_setopt_array($curl, array(
+                    CURLOPT_URL => 'http://localhost/projects/DearUniverseWTF/components/message_container.php',
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_ENCODING => '',
+                    CURLOPT_MAXREDIRS => 10,
+                    CURLOPT_TIMEOUT => 0,
+                    CURLOPT_FOLLOWLOCATION => true,
+                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                    CURLOPT_CUSTOMREQUEST => 'GET',
+                    ));
+
+                    $response = curl_exec($curl);
+
+                    curl_close($curl);
+                    echo $response;
+                ?>
                 <?php
                     if($postComments > 0){
                         foreach ($postCommentdata->data as $comment) {
@@ -183,8 +203,19 @@ $postContent = $postResponsedata[0]->post_content;
 
             fetch("http://localhost/projects/DearUniverseWTF/api/endpoints/posts/makeComment.php", requestOptions)
             .then(response => response.text())
-            .then(result => console.log(result))
-            .catch(error => console.log('error', error));
+            .then(result => {
+                response = JSON.parse(result);
+                if(response.msg == "success"){
+                    showSuccess("<p>Comment added successfully</p>")
+                    sleep(3000);
+                    window.location.reload();
+                }else{
+                    showError("<p>Could not add comment!</p>")
+                }
+            })
+            .catch(error => {
+                showError(`<p>Error: ${error}</p>`)
+            });
         }
     </script>
 </body>
