@@ -1,8 +1,8 @@
 <?php
 
     //Declarations
-    // $categoryId = $_POST['categoryId']; 
-    $categoryId = 1;
+    $categoryId = $_POST['categoryId']; 
+    // $categoryId = 1;
 
     // Get the latest post
     $latestPostcurl = curl_init();
@@ -116,11 +116,13 @@
     <link rel="stylesheet" href="./../../res/bootstrap/css/bootstrap.css">
     <script src="./../../res/bootstrap/js/bootstrap.js"></script>
     <!-- STYLE -->
-    <link rel="stylesheet" href="./../../style/global.css">
-    <link rel="stylesheet" href="./../../style/landing.css">
+    <link rel="stylesheet" href="./../../style/globals.css">
+    <link rel="stylesheet" href="./../../style/nav.css">
     <link rel="stylesheet" href="./../../style/home.css">
+    <!-- JAVASCRIPT -->
+    <script src="./../../js/globals.js"></script>
 </head>
-<body>
+<body onload="setActive()">
 
     <?php
         $curl = curl_init();
@@ -141,7 +143,11 @@
         curl_close($curl);
         echo $response;
     ?>
-    <div class="container-fluid">
+    <div class="container-fluid" id="content">
+        <form action="" method="post">
+            <input type="number" id="hdn-frm-catid" name="categoryId">
+            <input type="submit" id="hdn-frm-sbmt">
+        </form>
         <div class="row">
             <form action="./../ViewBlog/" method="post" id="latest_post" class="col-sm-12 col-md-7 col-lg-7">
                 <input type="hidden" id="id" name="id" value="DUWTF-<?php echo $latestPosts->post_id ?>">
@@ -169,7 +175,7 @@
 
                             //if the string doesn't contain any space then it will cut without word basis.
                             $content = $endPoint? substr($contentCut, 0, $endPoint) : substr($contentCut, 0);
-                            $content .= '... <input type="submit" class="read-more" value="Read More">';
+                            $content .= '... <input type="submit" class="read-more neonBlue" value="Read More">';
                             echo $content;
                         }else{
                             echo $contentRaw;
@@ -179,10 +185,14 @@
                 </div>
                 <div id="post-interactions">
                     <div id="post-comments">
-                        <i><img src="../../assets/icons/comment-text.svg" alt="comment icon" width="25"></i>Comments (<?php echo $postComments; ?>)
+                        <i>
+                        <svg id="comment-icon" xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 512 512"> <path fill="var(--ci-primary-color, currentColor)" d="M496,496H448.771L379.249,368H40a24.028,24.028,0,0,1-24-24V40A24.028,24.028,0,0,1,40,16H472a24.028,24.028,0,0,1,24,24ZM48,336H398.284L464,456.993V48H48Z" class="ci-primary"/> </svg>
+                        </i>Comments (<?php echo $postComments; ?>)
                     </div>
                     <div id="post-likes">
-                        <i><img src="../../assets/icons/hand-thumbs-up-fill.svg" alt="Likes icon" width="25"></i> Likes (<?php echo $postLikes ?>)
+                        <i>
+                        <svg id="like-icon" xmlns="http://www.w3.org/2000/svg" width="35" height="35" class="bi bi-heart" viewBox="0 0 16 16"> <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/> </svg>
+                        </i> Likes (<?php echo $postLikes ?>)
                     </div>
                 </div>
 
@@ -191,7 +201,7 @@
                 </ad>
             </form>
             <div class="col-sm-12 col-md-5 col-lg-5">
-                <h2>Previous Posts:</h2>
+                <h2 id="previous-posts-heading">Previous Posts:</h2>
                 <ul id="previous-posts-container">
                     <?php
                     
@@ -205,7 +215,7 @@
 
                                 echo <<<EOD
                                 <li>
-                                    <div class="previous-post">
+                                    <div class="previous-post" onclick="routeTo($categoryId)">
                                         <div class="previous-post-title">
                                             $post->post_title
                                         </div>
@@ -234,5 +244,40 @@
             </div>
         </div>
     </div>
+    <script>
+        function setActive(){
+            // NAV
+            let navItem = document.querySelector("#duwtf-category-<?php echo $categoryId;?>")
+            let color = navItem.getAttribute('data-color-scheme');
+            navItem.classList.add(`${color}-active`);
+            // COMMENT
+            let commentIcon = document.querySelector("#comment-icon");
+            let postComments = document.querySelector("#post-comments");
+            commentIcon.classList.add(`${color}-icon`);
+            postComments.classList.add(`play${titleCase(color)}`);
+            // LIKE
+            let likeIcon = document.querySelector("#like-icon");
+            let postLikes = document.querySelector("#post-likes");
+            likeIcon.classList.add(`${color}-icon`);
+            postLikes.classList.add(`play${titleCase(color)}`);
+            // CREATED AT
+            let createdAt = document.querySelector("#post-uploaded");
+            createdAt.classList.add(`play${titleCase(color)}`);
+            // PREVIOUS POSTS
+            let previousPostscontainer = document.querySelector("#previous-posts-container");
+            let previousPostsheading = document.querySelector("#previous-posts-heading")
+            previousPostsheading.classList.add(`neon${titleCase(color)}`)
+            previousPostscontainer.classList.add(`box${titleCase(color)}`);
+            // PREVIEW CONTAINER
+            let postDetails = document.querySelector("#post-details");
+            let previousPosts = document.querySelectorAll(".previous-post");
+            postDetails.classList.add(`box${titleCase(color)}`);
+            for(let i = 0; i < previousPosts.length; i++){
+                previousPosts[i].classList.add(`play${titleCase(color)}`);
+            }
+        }
+
+        document.onload = setActive();
+    </script>
 </body>
 </html>

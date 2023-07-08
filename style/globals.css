@@ -27,6 +27,15 @@ body{
     font-family: 'Anonymous Pro', monospace;
     font-family: 'Comfortaa', cursive;
 }
+.container-fluid{
+    padding: 50px;
+}
+#hdn-frm-catid{
+    display: none;
+}
+#hdn-frm-sbmt{
+    display: none;
+}
 /* Navigation */
 #nav{
     display: flex;
@@ -43,10 +52,254 @@ body{
 
 .read-more{
     border: none;
-    background-color: white;
+    background-color: transparent;
     font-weight: bolder;
     color: blue;
 }
+
+/* PLAY TEXT */
+.playRed, .playBlue, .playPink, .playLime, .playPurple{
+    transition: all 1s;
+    cursor: pointer;
+}
+.playRed:hover{
+    color: white !important;
+    text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px #FF000F,
+    0 0 82px #FF000F,
+    0 0 92px #FF000F,
+    0 0 102px #FF000F,
+    0 0 151px #FF000F;
+}
+.playBlue:hover{
+    color: white !important;
+    text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px #0003FF,
+    0 0 82px #0003FF,
+    0 0 92px #0003FF,
+    0 0 102px #0003FF,
+    0 0 151px #0003FF;
+}
+.playPink:hover{
+    color: white !important;
+    text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px #FF00D6,
+    0 0 82px #FF00D6,
+    0 0 92px #FF00D6,
+    0 0 102px #FF00D6,
+    0 0 151px #FF00D6;
+}
+.playLime:hover{
+    color: white !important;
+    text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px #9EFF00,
+    0 0 82px #9EFF00,
+    0 0 92px #9EFF00,
+    0 0 102px #9EFF00,
+    0 0 151px #9EFF00;
+}
+.playPurple:hover{
+    color: white !important;
+    text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px #B500FF,
+    0 0 82px #B500FF,
+    0 0 92px #B500FF,
+    0 0 102px #B500FF,
+    0 0 151px #B500FF;
+}
+
+/* NEON TEXT */
+.neonText {
+    color: #fff;
+    text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px #0fa,
+    0 0 82px #0fa,
+    0 0 92px #0fa,
+    0 0 102px #0fa,
+    0 0 151px #0fa;
+}
+
+.neonRed{
+    color: #fff;
+    text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px #FF000F,
+    0 0 82px #FF000F,
+    0 0 92px #FF000F,
+    0 0 102px #FF000F,
+    0 0 151px #FF000F;
+}
+.neonBlue{
+    color: #fff;
+    text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px #0003FF,
+    0 0 82px #0003FF,
+    0 0 92px #0003FF,
+    0 0 102px #0003FF,
+    0 0 151px #0003FF;
+}
+.neonPink{
+    color: #fff;
+    text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px #FF00D6,
+    0 0 82px #FF00D6,
+    0 0 92px #FF00D6,
+    0 0 102px #FF00D6,
+    0 0 151px #FF00D6;
+}
+.neonLime{
+    color: #fff;
+    text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px #9EFF00,
+    0 0 82px #9EFF00,
+    0 0 92px #9EFF00,
+    0 0 102px #9EFF00,
+    0 0 151px #9EFF00;
+}
+.neonPurple{
+    color: #fff;
+    text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px #B500FF,
+    0 0 82px #B500FF,
+    0 0 92px #B500FF,
+    0 0 102px #B500FF,
+    0 0 151px #B500FF;
+}
+/* BOX NEON */
+.boxRed, .boxBlue, .boxPink, .boxLime, .boxPurple{
+    transition: all 1s;
+}
+.boxRed:hover{
+    box-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px #FF000F,
+    0 0 82px #FF000F,
+    0 0 92px #FF000F,
+    0 0 102px #FF000F,
+    0 0 151px #FF000F;
+}
+.boxBlue:hover{
+    box-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px #0003FF,
+    0 0 82px #0003FF,
+    0 0 92px #0003FF,
+    0 0 102px #0003FF,
+    0 0 151px #0003FF;
+}
+.boxPink:hover{
+    box-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px #FF00D6,
+    0 0 82px #FF00D6,
+    0 0 92px #FF00D6,
+    0 0 102px #FF00D6,
+    0 0 151px #FF00D6;
+}
+.boxLime:hover{
+    box-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px #9EFF00,
+    0 0 82px #9EFF00,
+    0 0 92px #9EFF00,
+    0 0 102px #9EFF00,
+    0 0 151px #9EFF00;
+}
+.boxPurple:hover{
+    box-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px #B500FF,
+    0 0 82px #B500FF,
+    0 0 92px #B500FF,
+    0 0 102px #B500FF,
+    0 0 151px #B500FF;
+}
+/* FORM */
+.neonInput{
+    color: white;
+    text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 15px #fff,
+    0 0 2px #0003FF,
+    0 0 20px #0003FF,
+    0 0 15px #0003FF,
+    0 0 10px #0003FF,
+    0 0 1px #0003FF;
+    box-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 15px #fff,
+    0 0 2px #B500FF,
+    0 0 20px #B500FF,
+    0 0 15px #B500FF,
+    0 0 10px #B500FF,
+    0 0 1px #B500FF;
+}
+.neonInput-error{
+    color: white;
+    text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 15px #fff,
+    0 0 2px #FF000F,
+    0 0 20px #FF000F,
+    0 0 15px #FF000F,
+    0 0 10px #FF000F,
+    0 0 1px #FF000F;
+    box-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 15px #fff,
+    0 0 2px #FF000F,
+    0 0 20px #FF000F,
+    0 0 15px #FF000F,
+    0 0 10px #FF000F,
+    0 0 1px #FF000F;
+}
+
 /* Animations */
 @keyframes jiggle {
     20%{
@@ -61,5 +314,55 @@ body{
     }
     80%{
         transform: rotate(-5deg);
+    }
+}
+@keyframes redGlow {
+    from {
+        fill: #FF000F;
+        filter: drop-shadow(0 0 20px #FF000F);
+    }
+    to {
+        fill: #FF000F;
+        filter: drop-shadow(0 0 40px #FF000F);
+    }
+}
+@keyframes blueGlow {
+    from {
+        fill: #0003FF;
+        filter: drop-shadow(0 0 20px #0003FF);
+    }
+    to {
+        fill: #0003FF;
+        filter: drop-shadow(0 0 40px #0003FF);
+    }
+}
+@keyframes pinkGlow {
+    from {
+        fill: #FF00D6;
+        filter: drop-shadow(0 0 20px #FF00D6);
+    }
+    to {
+        fill: #FF00D6;
+        filter: drop-shadow(0 0 40px #FF00D6);
+    }
+}
+@keyframes limeGlow {
+    from {
+        fill: #9EFF00;
+        filter: drop-shadow(0 0 20px #9EFF00);
+    }
+    to {
+        fill: #9EFF00;
+        filter: drop-shadow(0 0 40px #9EFF00);
+    }
+}
+@keyframes purpleGlow {
+    from {
+        fill: #B500FF;
+        filter: drop-shadow(0 0 20px #B500FF);
+    }
+    to {
+        fill: #B500FF;
+        filter: drop-shadow(0 0 40px #B500FF);
     }
 }

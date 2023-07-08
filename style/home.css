@@ -1,5 +1,20 @@
+body{
+    background-color:black;
+    background-image: url("./../assets/wall.png");
+    background-attachment:fixed;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    color: white;
+    max-height: 100vh;
+}
+#content{
+    position: relative;
+    top: 100px;
+    padding: 50px;
+}
 #post-details{
-    border: 10px solid #FA535D;
+    background-color: rgba(0, 0, 0, 0.641);
     border-radius: 12px;
     padding: 20px;
 }
@@ -21,18 +36,57 @@
     display: flex;
     justify-content: left;
     align-items: center;
-    padding: 10px;
+    padding: 30px;
     gap: 30px;
 }
 #previous-posts-container{
-    border: 10px solid #FA535D;
+    background-color: rgba(0, 0, 0, 0.641);
     border-radius: 12px;
     padding: 20px;
     list-style-type: none;
 }
+#previous-post{
+    cursor: pointer;
+}
 #previous-posts-container li{
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid white;
 }
 .previous-post-title{
     font-size: 25px;
 }
+/* ICONS */
+.red-icon path {
+    fill: #FF000F;
+}
+.blue-icon path {
+    fill: #0003FF;
+}
+.pink-icon path {
+    fill: #FF00D6;
+}
+.lime-icon path {
+    fill: #9EFF00;
+}
+.purple-icon path {
+    fill: #B500FF;
+} 
+.red-icon:hover path {
+    fill: #FF000F;
+    animation: redGlow 1s infinite alternate;
+}
+.blue-icon:hover path {
+    fill: #0003FF;
+    animation: blueGlow 1s infinite alternate;
+}
+.pink-icon:hover path {
+    fill: #FF00D6;
+    animation: pinkGlow 1s infinite alternate;
+}
+.lime-icon:hover path {
+    fill: #9EFF00;
+    animation: limeGlow 1s infinite alternate;
+}
+.purple-icon:hover path {
+    fill: #B500FF;
+    animation: purpleGlow 1s infinite alternate;
+} 

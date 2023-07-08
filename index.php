@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,6 +17,17 @@
 
             
             <div class="col-12" id="nav">
+                <?php
+                    if(isset($_COOKIE['DUWTF-USER'])){
+                        echo <<<EOD
+                            <a class="nav-item" href="Pages/Profile/">Profile</a>
+                        EOD;
+                    }else{
+                        echo <<<EOD
+                            <span class="nav-item"><a class="authLink" href="Pages/SignUp/">SignUp</a>/<a class="authLink" href="Pages/SignIn/">SignIn</a></span>
+                        EOD;    
+                    }
+                ?>
                 <a class="nav-item" href="Pages/Home/">Home</a>
                 <a class="nav-item" href="Pages/ViewBlog/Latest/">Latest Post</a>
                 <a class="nav-item" href="#">Contact Me</a>

@@ -86,6 +86,7 @@
 // Declarations
 $postTitle = $postResponsedata[0]->post_title;
 $postContent = $postResponsedata[0]->post_content;
+$postCreated = $postResponsedata[0]->created_at;
 
 ?>
 <!DOCTYPE html>
@@ -101,7 +102,7 @@ $postContent = $postResponsedata[0]->post_content;
     <link rel="stylesheet" href="./../../style/globals.css">
     <link rel="stylesheet" href="./../../style/view.css">
     <!-- JAVASCRIPT -->
-    <link rel="stylesheet" href="./../../js/globals.js">
+    <script src="./../../js/globals.js"></script>
 </head>
 <body>
     <?php
@@ -124,20 +125,28 @@ $postContent = $postResponsedata[0]->post_content;
         echo $response;
     ?>
     <div class="container-fluid">
-        <div class="row">
-            <h1><?php echo $postTitle; ?></h1>
-            <div id="written-content">
+        <div class="row" id="content">
+            <h1 class="col-12" id="title"><?php echo $postTitle; ?></h1>
+            <span class="col-12" id="created-at">
+                <?php
+                    $tempDate = new DateTime($postCreated);
+                    $tempDate = $tempDate->format('F j, Y \a\t H:i:s');
+
+                    echo $tempDate;
+                ?>
+            </span>
+            <div class="col-12" id="written-content">
                 <?php
                     echo $postContent;
                 ?>
             </div>
-            <div id="comments">
+            <div class="col-sm-12 col-md-6 col-lg-6" id="comments">
                 <h2>Comments (<?php echo $postComments; ?>)</h2>
                 <div id="make-comment">
                     <input type="text" placeholder="Leave your comment here..." id="comment">
                     <button onclick="makeComment()">
                         <i>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" class="bi bi-send" viewBox="0 0 16 16"> <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"/> </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="red" class="bi bi-send" viewBox="0 0 16 16"> <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"/> </svg>
                         </i>
                     </button>
                 </div>
@@ -167,17 +176,17 @@ $postContent = $postResponsedata[0]->post_content;
                             $tempDate = $tempDate->format('F j, Y \a\t H:i:s');
 
                             echo <<<EOD
-                            <li>
                                 <div class="comment">
+                                    <div class="made-by">
+                                        $comment->member_id
+                                    </div>
                                     <div class="comment-text">
                                         $comment->comment
                                     </div>
-
                                     <div class="comment-created">
                                     Created: $tempDate
                                     </div>
                                 </div>
-                            </li>
                             EOD;
                         }
                     }else{
@@ -185,11 +194,14 @@ $postContent = $postResponsedata[0]->post_content;
                     }
                 ?>
             </div>
+            <div class="col-sm-12 col-md-6 col-lg-6">
+                    <img src="../../assets/landing/wtf.png" alt="What The F*ck???">
+            </div>
         </div>
     </div>
     <script>
         function makeComment(){
-            let comment = 
+            let comment = document.querySelector("#comment").value;
             var formdata = new FormData();
             formdata.append("userId", <?php echo $userId; ?>);
             formdata.append("postId", <?php echo $postId; ?>);

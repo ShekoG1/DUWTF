@@ -6,7 +6,8 @@
     $fName = $_POST['fName'];
     $lName = $_POST['lName'];
     $emailAddress = $_POST['emailAddress'];
-    $memberType = $_POST['memberType'];
+    // $memberType = $_POST['memberType'];
+    $memberType = "regular";
     $password = $_POST['password'];
 
     // Validations
@@ -19,9 +20,9 @@
     if(empty($emailAddress)){
         throwError("Email Addrees cannot be empty");
     }
-    if(empty($memberType)){
-        throwError("Member type cannot be empty");
-    }
+    // if(empty($memberType)){
+    //     throwError("Member type cannot be empty");
+    // }
     if(empty($password)){
         throwError("Password cannot be empty");
     }
@@ -29,7 +30,7 @@
     $fName = trim($fName);
     $lName = trim($lName);
     $emailAddress = trim($emailAddress);
-    $memberType = trim($memberType);
+    // $memberType = trim($memberType);
     $password = trim($password);
 
     if (preg_match('/\d/', $fName)) {

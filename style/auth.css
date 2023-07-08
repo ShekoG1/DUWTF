@@ -1,0 +1,190 @@
+body{
+    background-color: white;
+    background-image: url("./../assets/neon_scribble.jpg");
+    background-attachment:fixed;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+input:focus{
+    outline: none;
+}
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: white;
+        text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 15px #fff,
+    0 0 2px #0003FF,
+    0 0 20px #0003FF,
+    0 0 15px #0003FF,
+    0 0 10px #0003FF,
+    0 0 1px #0003FF;
+  }
+  ::-moz-placeholder { /* Firefox 19+ */
+    color: white;
+        text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 15px #fff,
+    0 0 2px #0003FF,
+    0 0 20px #0003FF,
+    0 0 15px #0003FF,
+    0 0 10px #0003FF,
+    0 0 1px #0003FF;
+  }
+  :-ms-input-placeholder { /* IE 10+ */
+    color: white;
+        text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 15px #fff,
+    0 0 2px #0003FF,
+    0 0 20px #0003FF,
+    0 0 15px #0003FF,
+    0 0 10px #0003FF,
+    0 0 1px #0003FF;
+  }
+  :-moz-placeholder { /* Firefox 18- */
+    color: white;
+        text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 15px #fff,
+    0 0 2px #0003FF,
+    0 0 20px #0003FF,
+    0 0 15px #0003FF,
+    0 0 10px #0003FF,
+    0 0 1px #0003FF;
+  }
+/* FORM */
+#content{
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.input-container{
+    padding: 20px;
+}
+#form{
+    background-color: rgba(0, 0, 0, 0.894);
+    padding: 20px;
+    border-radius: 20px;
+}
+#form h1{
+    font-size: 50px;
+}
+.form-input input{
+    font-size: 22px;
+    width: 100%;
+    border: 2px solid white;
+    /* background-color: rgb(245, 245, 245); */
+    background-color: transparent;
+    font-weight: 550;
+    border-radius: 20px;
+    padding: 10px;
+}
+.form-error{
+    display: none;
+    padding: 30px;
+}
+.passwordInputcontainer{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+.submit{
+    font-size: 30px;
+    color: white;
+    background-color: transparent;
+    padding: 10px;
+    border: 2px solid white;
+    border-radius: 20px;
+    text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 15px #fff,
+    0 0 2px #0003FF,
+    0 0 20px #0003FF,
+    0 0 15px #0003FF,
+    0 0 10px #0003FF,
+    0 0 1px #0003FF;
+    box-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 15px #fff,
+    0 0 2px #0003FF,
+    0 0 20px #0003FF,
+    0 0 15px #0003FF,
+    0 0 10px #0003FF,
+    0 0 1px #0003FF;
+}
+.submit:hover{
+    font-weight: bolder;
+}
+#submit-error{
+    font-size: 20px;
+}
+/* SVG ICON */
+#icon-eye {
+    /* set the icon color */
+    color: white;
+  }
+  
+  /* for other color settings, use the svg's ids */
+  /* 
+  #eye-pupil { color: blue; }
+  #eye-lashes { color: red; }
+  #eye-bottom, #eye-top { color: yellow; } 
+  */
+  
+  .eye-open button::after { content: "Close"; }
+  
+  .eye-close button::after { content: "Open"; }
+
+  /* INSIDE SVG */
+  #eye {
+    /* set these to blink faster/slower */
+    --duration-blink: .2s;
+    --duration-lashes: .2s;
+    
+    /* calculated and fixed vars */
+    --delay-lashes: var(--duration-blink);
+    --duration-pupil: .1s;
+    --delay-pupil: calc(var(--duration-blink)*2/3);
+  }
+
+  #eye-bottom, #eye-top { stroke-linecap: round; }
+
+  #eye-top, #eye-lashes { transition: var(--duration-blink) ease-in; }
+
+  #eye-pupil {
+    opacity: 0;
+    transition: opacity var(--duration-pupil) var(--delay-pupil) ease;
+  }
+
+  /* open state */
+  .eye-open #eye-top,
+  .eye-open #eye-lashes {
+    transform: rotateX(.5turn);
+    animation: scaleUp var(--duration-lashes) var(--delay-lashes) ease-in-out;
+  }
+
+  .eye-open #eye-pupil { opacity: 1; }
+
+  /* close state */
+  .eye-close #eye-lashes { animation: scaleDown var(--duration-lashes) var(--duration-blink) ease-in-out; }
+
+  .eye-close #eye-pupil { opacity: 0; }
+
+  /* keyfranes */
+  @keyframes scaleUp {
+    50% { transform: rotateX(.5turn) scaleY(1.15); }
+    to { transform: rotateX(.5turn) scaleY(1); }
+  }
+
+  @keyframes scaleDown {
+    50% { transform: scaleY(1.15); }
+    to { transform: scaleY(1); }
+  }

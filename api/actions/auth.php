@@ -37,23 +37,23 @@
 
                                 http_response_code(200);
                                 return json_encode(array("msg"=>"success", "data"=>$data));
-                                echo "TEST5";
+                                // echo "TEST5";
                             }
                             catch(Exception $e){
                                 auth::returnError($auth->getError());
-                                echo "TEST".$auth->getError();
+                                // echo "TEST".$auth->getError();
                             }
                         }else{
                             auth::returnError($updateMembershipresult->description);
-                            echo "TEST1";
+                            // echo "TEST1";
                         }
                     }else{
                         auth::returnError($createMemberresult->description);
-                        echo "TEST2";
+                        // echo "TEST2";
                     }
                 }else{
                     auth::returnError(json_encode($createMembershipresult));
-                    echo "TEST3".json_encode($createMembershipresult);
+                    // echo "TEST3".json_encode($createMembershipresult);
                 }
             }else{
                 // auth::returnError("A member with this email address already exists!");
