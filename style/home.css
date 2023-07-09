@@ -51,6 +51,10 @@ body{
 #previous-posts-container li{
     border-bottom: 2px solid white;
 }
+.hdn-submit{
+    display: none;
+}
+
 .previous-post-title{
     font-size: 25px;
 }

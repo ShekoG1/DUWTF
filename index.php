@@ -18,7 +18,7 @@
             
             <div class="col-12" id="nav">
                 <?php
-                    if(isset($_COOKIE['DUWTF-USER'])){
+                    if(isset($_COOKIE['DUWTF_USER'])){
                         echo <<<EOD
                             <a class="nav-item" href="Pages/Profile/">Profile</a>
                         EOD;

@@ -10,6 +10,9 @@ function routeTo(categoryId){
 	document.querySelector("#hdn-frm-catid").value = categoryId;
 	document.querySelector("#hdn-frm-sbmt").click();
 }
+function viewPreviouspost(postId){
+	document.querySelector(`#DUWTF-POST-${postId}`).click();
+}
 
 function titleCase(str) {
     return str
@@ -72,4 +75,25 @@ function isValidPassword(password) {
 	  hasNumber.test(password) &&
 	  hasSpecialChar.test(password)
 	);
+}
+
+function setCookie(data){
+    const cookieName = "DUWTF_USER";
+    const cookieValue = JSON.stringify({
+		jwt: data.jwt,
+		token: data.token
+	});
+    var expiryTime = new Date();
+    expiryTime.setTime(expiryTime.getTime() + (5 * 24 * 60 * 60 * 1000)); // 5 days in milliseconds
+    const cookieString = cookieName + "=" + encodeURIComponent(cookieValue) + "; expires=" + expiryTime.toUTCString() + "; path=/";
+    document.cookie = cookieString;
+}
+function setProfile(cookieSet){
+	let navAction = document.querySelector("#nav-action");
+
+	if(cookieSet){
+		navAction.innerHTML = `<a href="http://localhost/projects/DearUniverseWTF/Pages/Profile">Profile</a>`;
+	}else{
+		navAction.innerHTML = `<a href="http://localhost/projects/DearUniverseWTF/Pages/SignUp">SignUp</a>/<a href="http://localhost/projects/DearUniverseWTF/Pages/SignIn">SignIn</a>`;
+	}
 }

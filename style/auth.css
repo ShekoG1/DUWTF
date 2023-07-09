@@ -126,6 +126,19 @@ input:focus{
 #submit-error{
     font-size: 20px;
 }
+#opposite-auth{
+    padding-top: 30px;
+    font-size: 20px;
+}
+#opposite-auth a{
+  text-decoration: none;
+  font-weight: bold;
+  color: white;
+}
+#opposite-auth a:hover{
+  color:white;
+  font-weight: bolder;
+}
 /* SVG ICON */
 #icon-eye {
     /* set the icon color */

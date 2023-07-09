@@ -2,7 +2,8 @@
 
 </style>
 <div class="col-12" id="nav">
-    <div class='nav-item' id='nav-action'>
+    <div class='nav-item pink' id='nav-action'>
+       <!-- <a href="http://localhost/projects/DearUniverseWTF/Pages/Home">Home</a> -->
     </div>
     <?php
         $colors = array('red', 'purple', 'pink', 'blue', 'lime');

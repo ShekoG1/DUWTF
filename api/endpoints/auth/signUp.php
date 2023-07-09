@@ -31,7 +31,7 @@
     $lName = trim($lName);
     $emailAddress = trim($emailAddress);
     // $memberType = trim($memberType);
-    $password = trim($password);
+    // $password = trim($password);
 
     if (preg_match('/\d/', $fName)) {
         throwError("First name cannot contain numbers");
@@ -48,11 +48,11 @@
         throwError("Membership type is not valid!");
     }
 
-    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+    // $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
     $auth = new auth($service,$auth_service);
 
-    $result = $auth->signUp($fName,$lName,$emailAddress,$memberType,$hashedPassword);
+    $result = $auth->signUp($fName,$lName,$emailAddress,$memberType,$password);
 
     echo $result;
 ?>

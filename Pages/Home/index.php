@@ -1,8 +1,13 @@
 <?php
 
     //Declarations
-    $categoryId = $_POST['categoryId']; 
-    // $categoryId = 1;
+    $categoryId = !empty($_POST['categoryId']) ? $_POST['categoryId'] : 1; 
+    $cookieSet;
+    if(isset($_COOKIE['DUWTF_USER'])){
+        $cookieSet = true;
+    }else{
+        $cookieSet = false;
+    }
 
     // Get the latest post
     $latestPostcurl = curl_init();
@@ -145,11 +150,14 @@
     ?>
     <div class="container-fluid" id="content">
         <form action="" method="post">
+            <!-- <input type="text" id="hdn-frm-color" name="color"> -->
             <input type="number" id="hdn-frm-catid" name="categoryId">
             <input type="submit" id="hdn-frm-sbmt">
         </form>
         <div class="row">
             <form action="./../ViewBlog/" method="post" id="latest_post" class="col-sm-12 col-md-7 col-lg-7">
+                <input type="hidden" name="categoryId" value="<?php echo $categoryId; ?>">
+                <input type="hidden" class="hdn-frm-color" name="color">
                 <input type="hidden" id="id" name="id" value="DUWTF-<?php echo $latestPosts->post_id ?>">
                 <div id="post-details">
                     <div id="post-uploaded">
@@ -215,23 +223,28 @@
 
                                 echo <<<EOD
                                 <li>
-                                    <div class="previous-post" onclick="routeTo($categoryId)">
-                                        <div class="previous-post-title">
-                                            $post->post_title
-                                        </div>
+                                    <form action="./../ViewBlog/" method="post" onclick="viewPreviouspost($post->post_id)">
+                                        <input type="hidden" class="hdn-frm-color" name="color">
+                                        <input type="hidden" id="id" name="id" value="DUWTF-$post->post_id">
+                                        <input type="submit" class="hdn-submit" id="DUWTF-POST-$post->post_id">
+                                        <div class="previous-post">
+                                            <div class="previous-post-title">
+                                                $post->post_title
+                                            </div>
 
-                                        <div class="previous-post-info">
-                                        Created: $tempDate
-                                        </div>
-                                        <div class="previous-post-interactions">
-                                            <div class="previous-post-likes">
-            
+                                            <div class="previous-post-info">
+                                            Created: $tempDate
                                             </div>
-                                            <div class="previous-posts-num-comments">
-            
+                                            <div class="previous-post-interactions">
+                                                <div class="previous-post-likes">
+                
+                                                </div>
+                                                <div class="previous-posts-num-comments">
+                
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </form>
                                 </li>
                                 EOD;
                             }
@@ -275,9 +288,15 @@
             for(let i = 0; i < previousPosts.length; i++){
                 previousPosts[i].classList.add(`play${titleCase(color)}`);
             }
+            // NEXT PAGE
+            let hdn_frm_color = document.querySelectorAll(".hdn-frm-color");
+            for(let i=0; i < hdn_frm_color.length; i++){
+                hdn_frm_color[i].value = color;
+            }
         }
 
         document.onload = setActive();
+        setProfile(<?php echo $cookieSet; ?>);
     </script>
 </body>
 </html>

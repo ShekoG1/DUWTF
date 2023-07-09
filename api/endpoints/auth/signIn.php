@@ -3,20 +3,24 @@
     require "../../actions/auth.php";
 
     // Declarations
-    $userId = $_POST['userId'];
+    $emailAddress = $_POST['emailAddress'];
+    $password = $_POST['password'];
 
     // Validations
-    if(empty($userId)){
-        throwError("User Id cannot be empty");
+    if(empty($emailAddress)){
+        throwError("Email address cannot be empty");
     }
-    if(!is_numeric($userId)){
-        throwError("User Id must be a numeric value");
+    if(empty($password)){
+        throwError("Password cannot be empty");
     }
-    $userId = trim($userId);
+    $emailAddress = trim($emailAddress);
+    // $password = trim($password);
+
+    // $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
     $auth = new auth($service,$auth_service);
 
-    $result = $auth->validateUserbyId($userId);
+    $result = $auth->signIn($emailAddress,$password);
 
     echo $result;
 ?>

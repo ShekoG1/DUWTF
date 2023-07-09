@@ -122,6 +122,9 @@
                 <div class="col-12 neonRed form-error" id="submit-error">
 
                 </div>
+                <div class="col-12 neonBlue" id="opposite-auth">
+                    <p>Or you can <a href="http://localhost/projects/DearUniverseWTF/Pages/SignIn">Signin here</a></p>
+                </div>
             </div>
         </div>
     </div>

@@ -61,20 +61,20 @@
             </div>
             <!-- SUBMIT -->
             <div class="row input-container">
-                <button class="col-12 submit" onclick="signUp()">
+                <button class="col-12 submit" onclick="signIn()">
                     SignIn
                 </button>
                 <div class="col-12 neonRed form-error" id="submit-error">
 
+                </div>
+                <div class="col-12 neonBlue" id="opposite-auth">
+                    <p>Or you can <a href="http://localhost/projects/DearUniverseWTF/Pages/SignUp">Signup here</a></p>
                 </div>
             </div>
         </div>
     </div>
     <script>
         toggleClass("wrapper");
-        toggleClass("confirmWrapper");
-        let validFname = false;
-        let validLname = false;
         let validEmailaddress = false;
         let validPassword = false;
 
@@ -87,7 +87,7 @@
             let emailAddress = document.querySelector("#emailAddress").value;
             let password = document.querySelector("#password").value;
 
-            if(validFname && validLname && validEmailaddress && validPassword){
+            if(validEmailaddress && validPassword){
                 var formdata = new FormData();
                 formdata.append("emailAddress", emailAddress);
                 formdata.append("password", password);
@@ -104,7 +104,8 @@
                     // Show success
                     const data = JSON.parse(result);
                     if(data.msg == "success"){
-                        window.location.href = "https://localhost/projects/DearUniverseWTF/"
+                        setCookie(data.data);
+                        window.location.href = "../../";
                     }else{
                         form_error.innerHTML = `<p><strong>Error:</strong><em>${data.description}</em><p>`;
                         form_error.style.display = "inline-block";

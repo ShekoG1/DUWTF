@@ -11,6 +11,7 @@
     background-position: right;
     background-repeat: no-repeat;
     background-size: 100% 100%;
+    z-index: 99;
 }
 .nav-item{
     width:150px;
@@ -20,6 +21,13 @@
     cursor:pointer;
 }
 .nav-item:hover{
+    color:white;
+}
+#nav-action a {
+    color: white;
+    text-decoration: none;
+}
+#nav-action a:hover{
     color:white;
 }
 
