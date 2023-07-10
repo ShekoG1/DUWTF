@@ -51,7 +51,7 @@
     <!-- STYLE -->
     <link rel="stylesheet" href="./../../style/globals.css">
     <link rel="stylesheet" href="./../../style/nav.css">
-    <link rel="stylesheet" href="./../../style/view.css">
+    <link rel="stylesheet" href="./../../style/profile.css">
     <!-- JAVASCRIPT -->
     <script src="./../../js/globals.js"></script>
 </head>
@@ -73,66 +73,77 @@
         echo $response;
     ?>
     <div class="container-fluid">
-        <div class="row profile-detail-container">
-            <div class="col-12 profile-detail-label neonPink">
-                First Name:
+        <div class="row">
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <div class="row profile-detail-container">
+                    <div class="col-12 profile-detail neonBlue">
+                        <h1>Profile</h1>
+                    </div>
+                </div>
+                <div class="row profile-detail-container">
+                    <div class="col-12 profile-detail-label neonPink">
+                        First Name:
+                    </div>
+                    <div class="col-12 profile-detail neonBlue">
+                        <?php echo $fName; ?>
+                    </div>
+                </div>
+                <div class="row profile-detail-container">
+                    <div class="col-12 profile-detail-label neonPink">
+                        Last Name:
+                    </div>
+                    <div class="col-12 profile-detail neonBlue">
+                    <?php echo $lName; ?>
+                    </div>
+                </div>
+                <div class="row profile-detail-container">
+                    <div class="col-12 profile-detail-label neonPink">
+                        Email Address:
+                    </div>
+                    <div class="col-12 profile-detail neonBlue">
+                    <?php echo $emailAddress; ?>
+                    </div>
+                </div>
+                <!-- <div class="row profile-detail-container">
+                    <div class="col-12 profile-detail-label">
+                        User Type
+                    </div>
+                    <div class="col-12 profile-detail">
+                        <?php #echo $fName; ?>
+                    </div>
+                </div> -->
+                <div class="row profile-detail-container">
+                    <div class="col-12 profile-detail-label neonPink">
+                        Signed Up
+                    </div>
+                    <div class="col-12 profile-detail neonBlue">
+                        <?php
+                            $tempDate = new DateTime($createdAt);
+                            $tempDate = $tempDate->format('F j, Y \a\t H:i:s');
+                            echo $tempDate;
+                        ?>
+                    </div>
+                </div>
             </div>
-            <div class="col-12 profile-detail neonBlue">
-                <?php echo $fName; ?>
-            </div>
-        </div>
-        <div class="row profile-detail-container">
-            <div class="col-12 profile-detail-label neonPink">
-                Last Name:
-            </div>
-            <div class="col-12 profile-detail neonBlue">
-            <?php echo $lName; ?>
-            </div>
-        </div>
-        <div class="row profile-detail-container">
-            <div class="col-12 profile-detail-label neonPink">
-                Email Address:
-            </div>
-            <div class="col-12 profile-detail neonBlue">
-            <?php echo $emailAddress; ?>
-            </div>
-        </div>
-        <!-- <div class="row profile-detail-container">
-            <div class="col-12 profile-detail-label">
-                User Type
-            </div>
-            <div class="col-12 profile-detail">
-                <?php #echo $fName; ?>
-            </div>
-        </div> -->
-        <div class="row profile-detail-container">
-            <div class="col-12 profile-detail-label neonPink">
-                Signed Up
-            </div>
-            <div class="col-12 profile-detail neonBlue">
-                <?php
-                    $tempDate = new DateTime($createdAt);
-                    $tempDate = $tempDate->format('F j, Y \a\t H:i:s');
-                    echo $tempDate;
-                ?>
-            </div>
-        </div>
-        <div class="row profile-detail-container">
-            <div class="col-12 danger-zone neonRed">DANGER ZONE</div>
-            <div class="col-12 profile-detail-label">
-                <button class="boxRed playRed">
-                    Change Email Address
-                <button>
-            </div>
-            <div class="col-12 profile-detail">
-                <button class="boxRed playRed">
-                    Reset Password
-                <button>   
-            </div>
-            <div class="col-12 profile-detail">
-                <button class="boxRed playRed">
-                    Delete Account
-                <button>   
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <div class="row profile-detail-container" id="danger-zone">
+                    <div class="col-12 danger-zone neonRed">DANGER ZONE</div>
+                    <div class="col-12 danger-detail">
+                        <button class="neonInput-error playRed">
+                            Change Email Address
+                        </button>
+                    </div>
+                    <div class="col-12 danger-detail">
+                        <button class="neonInput-error playRed">
+                            Reset Password
+                        </button>   
+                    </div>
+                    <div class="col-12 danger-detail">
+                        <button class="neonInput-error playRed">
+                            Delete Account
+                        </button>   
+                    </div>
+                </div>
             </div>
         </div>
     </div>

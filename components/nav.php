@@ -5,6 +5,9 @@
     <div class='nav-item pink' id='nav-action'>
        <!-- <a href="http://localhost/projects/DearUniverseWTF/Pages/Home">Home</a> -->
     </div>
+    <div class='nav-item lime' id='explore'>
+       <a href="http://localhost/projects/DearUniverseWTF/Pages/Explore" class="playLime">Explore</a>
+    </div>
     <?php
         $colors = array('red', 'purple', 'pink', 'blue', 'lime');
         $curl = curl_init();

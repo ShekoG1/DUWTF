@@ -1,0 +1,93 @@
+body{
+    background-color:black;
+    background-image: url("./../assets/wall.png");
+    background-attachment:fixed;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    color: white;
+    max-height: 100vh;
+}
+input:focus{
+    outline: none !important;
+}
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: white;
+        text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 15px #fff,
+    0 0 2px #0003FF,
+    0 0 20px #0003FF,
+    0 0 15px #0003FF,
+    0 0 10px #0003FF,
+    0 0 1px #0003FF;
+  }
+  ::-moz-placeholder { /* Firefox 19+ */
+    color: white;
+        text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 15px #fff,
+    0 0 2px #0003FF,
+    0 0 20px #0003FF,
+    0 0 15px #0003FF,
+    0 0 10px #0003FF,
+    0 0 1px #0003FF;
+  }
+  :-ms-input-placeholder { /* IE 10+ */
+    color: white;
+        text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 15px #fff,
+    0 0 2px #0003FF,
+    0 0 20px #0003FF,
+    0 0 15px #0003FF,
+    0 0 10px #0003FF,
+    0 0 1px #0003FF;
+  }
+  :-moz-placeholder { /* Firefox 18- */
+    color: white;
+        text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 15px #fff,
+    0 0 2px #0003FF,
+    0 0 20px #0003FF,
+    0 0 15px #0003FF,
+    0 0 10px #0003FF,
+    0 0 1px #0003FF;
+  }
+.category-table{
+    padding: 20px;
+}
+.table-container{
+  background-color: rgba(0, 0, 0, 0.76);
+  padding: 20px;
+  border-radius: 20px;
+}
+th{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+}
+td{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  padding: 30px;
+}
+td form{
+  width: 100%;
+}
+td form input[type="submit"]{
+  padding: 20px;
+  background-color: transparent;
+  color: white;
+  border-radius: 20px;
+  width: 100%;
+  border: 1px solid white;
+}

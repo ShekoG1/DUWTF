@@ -49,7 +49,10 @@ body{
     display: inline-block;
     transition: all 1s;
 }
-
+#explore a{
+    text-decoration: none;
+    color: white;
+}
 .read-more{
     border: none;
     background-color: transparent;
