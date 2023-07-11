@@ -99,14 +99,14 @@
         <?php
         
         foreach ($categoryResults->data as $category) {
-            // echo "
             // let color$category->category_id = titleCase(document.querySelector('duwtf-category-$category->category_id')).getAttribute('data-color-scheme')
-            // document.querySelector('#table-$category->category_id').classList.add(`box`+titleCase(' '+color$category->category_id))
-            //     let table_$category->category_id = new DataTable('#table-$category->category_id', {
-            //         // options
+            //document.querySelector('#table-$category->category_id').classList.add(`box`+titleCase(color$category->category_id))
+            echo "
+                let table_$category->category_id = new DataTable('#table-$category->category_id', {
+                    // options
 
-            //     });
-            // ";
+                });
+            ";
         }
 
         ?>

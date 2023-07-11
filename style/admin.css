@@ -1,6 +1,6 @@
 body{
     background-color:black;
-    background-image: url("./../assets/wall.png");
+    background-image: url("./../assets/admin.jpg");
     background-attachment:fixed;
     background-position: right;
     background-repeat: no-repeat;
@@ -59,3 +59,62 @@ input:focus{
     0 0 10px #0003FF,
     0 0 1px #0003FF;
   }
+.container{
+  padding: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+#login{
+  height: 500px;
+  background-color: rgba(0, 0, 0, 0.167);
+  backdrop-filter: blur(5px);
+  border-radius: 20px;
+  padding: 20px;
+  display: grid;
+  grid-template-areas:
+    'header header header header header header'
+    'otp otp otp otp otp otp'
+    'footer footer footer footer footer footer';
+  gap: 20px;
+}
+#login-header{
+  grid-area: header;
+}
+#opt{
+  grid-area: otp;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+#login-footer{
+  grid-area: footer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.otp{
+  color: white;
+  background-color: transparent;
+  border-radius: 20px;
+  border: 1px solid white;
+  padding: 20px;
+  width: 5rem;
+  max-width: 200px;
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+}
+#loginBtn{
+  color: white;
+  background-color: transparent;
+  border-radius: 20px;
+  border: 1px solid white;
+  padding: 20px;
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+}
