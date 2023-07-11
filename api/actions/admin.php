@@ -6,6 +6,10 @@
             $this->adminToken = $adminToken;
         }
 
+        public function signIn($OTP){
+
+        }
+
         public function getUsefulstats(){
 
         }
