@@ -13,7 +13,7 @@
     $latestPostcurl = curl_init();
 
     curl_setopt_array($latestPostcurl, array(
-    CURLOPT_URL => 'http://localhost/projects/DearUniverseWTF/api/endpoints/posts/getLatestpost.php',
+    CURLOPT_URL => 'https://8000-shekog1-duwtf-i4uaekgdqdz.ws-eu101.gitpod.io/api/endpoints/posts/getLatestpost.php',
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => '',
     CURLOPT_MAXREDIRS => 10,
@@ -37,7 +37,7 @@
     $postLikecurl = curl_init();
     
     curl_setopt_array($postLikecurl, array(
-      CURLOPT_URL => 'http://localhost/projects/DearUniverseWTF/api/endpoints/posts/getPostlikes.php',
+      CURLOPT_URL => 'https://8000-shekog1-duwtf-i4uaekgdqdz.ws-eu101.gitpod.io/api/endpoints/posts/getPostlikes.php',
       CURLOPT_RETURNTRANSFER => true,
       CURLOPT_ENCODING => '',
       CURLOPT_MAXREDIRS => 10,
@@ -62,7 +62,7 @@
     $postCommentcurl = curl_init();
     
     curl_setopt_array($postCommentcurl, array(
-      CURLOPT_URL => 'http://localhost/projects/DearUniverseWTF/api/endpoints/posts/getPostcomments.php',
+      CURLOPT_URL => 'https://8000-shekog1-duwtf-i4uaekgdqdz.ws-eu101.gitpod.io/api/endpoints/posts/getPostcomments.php',
       CURLOPT_RETURNTRANSFER => true,
       CURLOPT_ENCODING => '',
       CURLOPT_MAXREDIRS => 10,
@@ -87,7 +87,7 @@
     $latest10Postscurl = curl_init();
     
     curl_setopt_array($latest10Postscurl, array(
-      CURLOPT_URL => 'http://localhost/projects/DearUniverseWTF/api/endpoints/posts/getLatest10postsPercategory.php',
+      CURLOPT_URL => 'https://8000-shekog1-duwtf-i4uaekgdqdz.ws-eu101.gitpod.io/api/endpoints/posts/getLatest10postsPercategory.php',
       CURLOPT_RETURNTRANSFER => true,
       CURLOPT_ENCODING => '',
       CURLOPT_MAXREDIRS => 10,
@@ -133,7 +133,7 @@
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-        CURLOPT_URL => 'http://localhost/projects/DearUniverseWTF/components/nav.php',
+        CURLOPT_URL => 'https://8000-shekog1-duwtf-i4uaekgdqdz.ws-eu101.gitpod.io/components/nav.php',
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,

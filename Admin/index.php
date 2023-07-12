@@ -1,8 +1,8 @@
 <?php
     session_start();
-    // include "../api/endpoints/email/sendEmail.php";
-    // $otp = sendOTPmail();
-    // $_SESSION['otp'] = $otp;
+    include "../api/endpoints/email/sendEmail.php";
+    $otp = sendOTPmail();
+    $_SESSION['otp'] = $otp;
 
 ?>
 <!DOCTYPE html>

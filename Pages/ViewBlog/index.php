@@ -16,7 +16,7 @@
     $postCurl = curl_init();
     
     curl_setopt_array($postCurl, array(
-      CURLOPT_URL => 'http://localhost/projects/DearUniverseWTF/api/endpoints/posts/getPostbyId.php',
+      CURLOPT_URL => 'https://8000-shekog1-duwtf-i4uaekgdqdz.ws-eu101.gitpod.io/api/endpoints/posts/getPostbyId.php',
       CURLOPT_RETURNTRANSFER => true,
       CURLOPT_ENCODING => '',
       CURLOPT_MAXREDIRS => 10,
@@ -41,7 +41,7 @@
     $postLikecurl = curl_init();
     
     curl_setopt_array($postLikecurl, array(
-      CURLOPT_URL => 'http://localhost/projects/DearUniverseWTF/api/endpoints/posts/getPostlikes.php',
+      CURLOPT_URL => 'https://8000-shekog1-duwtf-i4uaekgdqdz.ws-eu101.gitpod.io/api/endpoints/posts/getPostlikes.php',
       CURLOPT_RETURNTRANSFER => true,
       CURLOPT_ENCODING => '',
       CURLOPT_MAXREDIRS => 10,
@@ -66,7 +66,7 @@
     $postCommentcurl = curl_init();
     
     curl_setopt_array($postCommentcurl, array(
-      CURLOPT_URL => 'http://localhost/projects/DearUniverseWTF/api/endpoints/posts/getPostcomments.php',
+      CURLOPT_URL => 'https://8000-shekog1-duwtf-i4uaekgdqdz.ws-eu101.gitpod.io/api/endpoints/posts/getPostcomments.php',
       CURLOPT_RETURNTRANSFER => true,
       CURLOPT_ENCODING => '',
       CURLOPT_MAXREDIRS => 10,
@@ -114,7 +114,7 @@ $postCreated = $postResponsedata[0]->created_at;
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-        CURLOPT_URL => 'http://localhost/projects/DearUniverseWTF/components/nav.php',
+        CURLOPT_URL => 'https://8000-shekog1-duwtf-i4uaekgdqdz.ws-eu101.gitpod.io/components/nav.php',
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,
@@ -170,7 +170,7 @@ $postCreated = $postResponsedata[0]->created_at;
                 <?php
                     $curl = curl_init();
                     curl_setopt_array($curl, array(
-                    CURLOPT_URL => 'http://localhost/projects/DearUniverseWTF/components/message_container.php',
+                    CURLOPT_URL => 'https://8000-shekog1-duwtf-i4uaekgdqdz.ws-eu101.gitpod.io/components/message_container.php',
                     CURLOPT_RETURNTRANSFER => true,
                     CURLOPT_ENCODING => '',
                     CURLOPT_MAXREDIRS => 10,
@@ -229,7 +229,7 @@ $postCreated = $postResponsedata[0]->created_at;
                 redirect: 'follow'
                 };
 
-                fetch("http://localhost/projects/DearUniverseWTF/api/endpoints/posts/makeComment.php", requestOptions)
+                fetch("https://8000-shekog1-duwtf-i4uaekgdqdz.ws-eu101.gitpod.io/api/endpoints/posts/makeComment.php", requestOptions)
                 .then(response => response.text())
                 .then(result => {
                     response = JSON.parse(result);
