@@ -1,7 +1,7 @@
 <div id="nav-container" class="nav-container-closed">
     <div id="nav" class="boxPink">
-        <div class="nav-heading fadeIn" onclick="toggleNav()">
-            <span>
+        <div class="nav-heading fadeIn">
+            <span onclick="toggleNav()">
                 <svg class="hb" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" stroke="#eee" stroke-width=".6" fill="rgba(0,0,0,0)" stroke-linecap="round" style="cursor: pointer">
                     <path d="M2,3L5,3L8,3M2,5L8,5M2,7L5,7L8,7">
                         <animate dur="0.2s" attributeName="d" values="M2,3L5,3L8,3M2,5L8,5M2,7L5,7L8,7;M3,3L5,5L7,3M5,5L5,5M3,7L5,5L7,7" fill="freeze" begin="start.begin" />
@@ -23,7 +23,7 @@
                 <a href="#">ICON</a>
             </div>
             <div class="nav-route">
-                <a href="#">ROUTE</a>
+                <a href="#">Dashboard</a>
             </div>
         </div>
         <div class="nav-item boxRed playRed">
@@ -31,7 +31,7 @@
                 <a href="#">ICON</a>
             </div>
             <div class="nav-route">
-                <a href="#">ROUTE</a>
+                <a href="#">Content</a>
             </div>
         </div>
         <div class="nav-item boxBlue playBlue">
@@ -39,7 +39,7 @@
                 <a href="#">ICON</a>
             </div>
             <div class="nav-route">
-                <a href="#">ROUTE</a>
+                <a href="#">Users</a>
             </div>
         </div>
         <div class="nav-item boxLime playLime">
@@ -47,7 +47,7 @@
                 <a href="#">ICON</a>
             </div>
             <div class="nav-route">
-                <a href="#">ROUTE</a>
+                <a href="#">Subscriptions</a>
             </div>
         </div>
         <div class="nav-item boxPurple playPurple">
@@ -55,7 +55,7 @@
                 <a href="#">ICON</a>
             </div>
             <div class="nav-route">
-                <a href="#">ROUTE</a>
+                <a href="#">News</a>
             </div>
         </div>
     </div>
