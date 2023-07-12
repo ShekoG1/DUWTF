@@ -1,8 +1,8 @@
 <?php
     session_start();
-    include "../api/endpoints/email/sendEmail.php";
-    $otp = sendOTPmail();
-    $_SESSION['otp'] = $otp;
+    // include "../api/endpoints/email/sendEmail.php";
+    // $otp = sendOTPmail();
+    // $_SESSION['otp'] = $otp;
 
 ?>
 <!DOCTYPE html>
@@ -16,7 +16,6 @@
     <script src="./../res/bootstrap/js/bootstrap.js"></script>
     <!-- STYLE -->
     <link rel="stylesheet" href="./../style/globals.css">
-    <link rel="stylesheet" href="./../style/nav.css">
     <link rel="stylesheet" href="./../style/admin.css">
     <!-- JAVASCRIPT -->
     <!-- <script src="./../js/globals.js"></script> -->
@@ -47,7 +46,8 @@
                     document.getElementById(`char${nextFieldId}`).focus();
                 }
             }else{
-                document.querySelector("#loginBtn").focus();
+                // document.querySelector("#loginBtn").focus();
+                validate();
             }
         }
         function validate(){
@@ -56,6 +56,10 @@
             let char3 = document.querySelector("#char3").value;
             let char4 = document.querySelector("#char4").value;
             let char5 = document.querySelector("#char5").value;
+
+            //Fetch Query to endpoint
+
+            window.location.href= "./Admin/Dashboard/";
         }
 
     </script>
