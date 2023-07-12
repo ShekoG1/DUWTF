@@ -118,7 +118,7 @@
         sleep(10);
     }
     function sendOTPmail(){
-        $generated_password = generateRandomString(10);
+        $generated_password = generateRandomString(5);
 
         $mail = new PHPMailer;
         // $mail->SMTPDebug = 3;                               // Enable verbose debug output

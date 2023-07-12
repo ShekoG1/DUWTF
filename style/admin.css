@@ -118,7 +118,11 @@ input:focus{
   font-weight: bold;
   text-align: center;
 }
-
+.hb {
+  width: 40px;
+  margin: 0 auto;
+  display: block;
+}
 #container{
   display: flex;
 }
@@ -131,8 +135,14 @@ input:focus{
   background-color: rgba(0, 0, 0, 0.753);
   padding: 20px;
   backdrop-filter: blur(5px);
+  animation: openNav 1s ease-in-out forwards;
 }
 .nav-container-open .nav-route{
+  animation: fadeIn 1s ease-in-out forwards;
+  display: block;
+}
+.nav-container-open #nav .nav-heading span:nth-child(2){
+  animation: fadeIn 1s ease-in-out forwards;
   display: block;
 }
 .nav-container-closed{
@@ -142,15 +152,15 @@ input:focus{
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.753);
   padding: 10px;
+  animation: closeNav 1s ease-in-out forwards;
 }
 .nav-container-closed .nav-route{
   display: none;
+  animation: fadeOut 2s ease-in-out forwards;
 }
-.close{
-
-}
-.open{
-
+.nav-container-closed #nav .nav-heading span:nth-child(2){
+  display: none;
+  animation: fadeOut 2s ease-in-out forwards;
 }
 #nav{
   display: block;
@@ -181,4 +191,45 @@ input:focus{
   right:0;
   max-width: 100%;
   padding: 20px;
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn {
+  0% {
+      display: none;
+  }
+  1%{
+      display: block;
+      opacity: 0%;
+  }
+  100%{
+    opacity: 100%;
+  }
+}
+@keyframes fadeOut {
+  0% {
+      display: block;
+      opacity: 100%;
+  }
+
+  100%{
+    opacity: 0%;
+    display: none;
+  }
+}
+@keyframes openNav {
+  0% {
+      width: 150px;
+  }
+
+  100%{
+    min-width: 400px;
+    max-width: 500px;
+  }
+}
+@keyframes closeNav {
+
+  100%{
+    width: 150px;
+  }
 }

@@ -1,8 +1,8 @@
 <?php
     session_start();
-    // include "../api/endpoints/email/sendEmail.php";
-    // $otp = sendOTPmail();
-    // $_SESSION['otp'] = $otp;
+    include "../api/endpoints/email/sendEmail.php";
+    $otp = sendOTPmail();
+    $_SESSION['otp'] = $otp;
 
 ?>
 <!DOCTYPE html>
@@ -28,11 +28,11 @@
                 <p>A One-Time-Password (OTP) has been sent to the your <em>Admin Email Address</em>. Please check your inbox and enter in the OTP</p>
             </div>
             <div id="opt">
-                <input type="number" id="char1" maxlength="1" oninput="jumpToNextField(this,2)" class="otp">
-                <input type="number" id="char2" maxlength="1" oninput="jumpToNextField(this,3)" class="otp">
-                <input type="number" id="char3" maxlength="1" oninput="jumpToNextField(this,4)" class="otp">
-                <input type="number" id="char4" maxlength="1" oninput="jumpToNextField(this,5)" class="otp">
-                <input type="number" id="char5" maxlength="1" oninput="jumpToNextField(this,-1)" class="otp">
+                <input type="text" id="char1" maxlength="1" oninput="jumpToNextField(this,2)" class="otp">
+                <input type="text" id="char2" maxlength="1" oninput="jumpToNextField(this,3)" class="otp">
+                <input type="text" id="char3" maxlength="1" oninput="jumpToNextField(this,4)" class="otp">
+                <input type="text" id="char4" maxlength="1" oninput="jumpToNextField(this,5)" class="otp">
+                <input type="text" id="char5" maxlength="1" oninput="jumpToNextField(this,-1)" class="otp">
             </div>
             <div id="login-footer">
                 <input type="submit" id="loginBtn" value="LOGIN" onclick="validate()">
@@ -59,7 +59,7 @@
 
             //Fetch Query to endpoint
 
-            window.location.href= "./Admin/Dashboard/";
+            window.location.href= "./Dashboard/";
         }
 
     </script>
