@@ -13,7 +13,6 @@ body{
 }
 /* Body */
 .container-fluid{
-    min-height: 100vh;
     padding: 50px;
 }
 .authLink{
@@ -74,6 +73,7 @@ body{
 .number-container{
     width: 100%;
     font-weight: bolder;
+    font-size: 40px;
 }
 .blog-title{
     margin-top: 25%;
