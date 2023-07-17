@@ -13,7 +13,7 @@
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-        CURLOPT_URL => 'https://8000-shekog1-duwtf-i4uaekgdqdz.ws-eu101.gitpod.io/api/endpoints/auth/validateUserbyId.php',
+        CURLOPT_URL => 'http://localhost/projects/DearUniverseWTF/api/endpoints/auth/validateUserbyId.php',
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,
@@ -59,7 +59,7 @@
     <?php
         $curl = curl_init();
         curl_setopt_array($curl, array(
-        CURLOPT_URL => 'https://8000-shekog1-duwtf-i4uaekgdqdz.ws-eu101.gitpod.io/components/nav.php',
+        CURLOPT_URL => 'http://localhost/projects/DearUniverseWTF/components/nav.php',
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,
@@ -151,7 +151,7 @@
     <script>
         const cookieSet = <?php echo $cookieSet; ?>;
         if(!cookieSet){
-            window.location.href = "https://8000-shekog1-duwtf-i4uaekgdqdz.ws-eu101.gitpod.io/";
+            window.location.href = "http://localhost/projects/DearUniverseWTF/";
         }
         setProfile(<?php echo $cookieSet; ?>);
     </script>

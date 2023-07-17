@@ -3,17 +3,17 @@
 </style>
 <div class="col-12" id="nav">
     <div class='nav-item pink' id='nav-action'>
-       <!-- <a href="https://8000-shekog1-duwtf-i4uaekgdqdz.ws-eu101.gitpod.io/Pages/Home">Home</a> -->
+       <!-- <a href="http://localhost/projects/DearUniverseWTF/Pages/Home">Home</a> -->
     </div>
     <div class='nav-item lime' id='explore'>
-       <a href="https://8000-shekog1-duwtf-i4uaekgdqdz.ws-eu101.gitpod.io/Pages/Explore" class="playLime">Explore</a>
+       <a href="http://localhost/projects/DearUniverseWTF/Pages/Explore" class="playLime">Explore</a>
     </div>
     <?php
         $colors = array('red', 'purple', 'pink', 'blue', 'lime');
         $curl = curl_init();
         
         curl_setopt_array($curl, array(
-          CURLOPT_URL => 'https://8000-shekog1-duwtf-i4uaekgdqdz.ws-eu101.gitpod.io/api/endpoints/categories/getAllcategories.php',
+          CURLOPT_URL => 'http://localhost/projects/DearUniverseWTF/api/endpoints/categories/getAllcategories.php',
           CURLOPT_RETURNTRANSFER => true,
           CURLOPT_ENCODING => '',
           CURLOPT_MAXREDIRS => 10,

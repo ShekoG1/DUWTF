@@ -51,7 +51,7 @@
                 $curl = curl_init();
 
                 curl_setopt_array($curl, array(
-                CURLOPT_URL => 'https://8000-shekog1-duwtf-i4uaekgdqdz.ws-eu101.gitpod.io/api/endpoints/posts/getPostsbyCategory.php',
+                CURLOPT_URL => 'http://localhost/projects/DearUniverseWTF/api/endpoints/posts/getPostsbyCategory.php',
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_ENCODING => '',
                 CURLOPT_MAXREDIRS => 10,

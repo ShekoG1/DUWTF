@@ -1,76 +1,83 @@
 /* Imports */
 @import url("globals.css");
 
+body{
+    background-color:black;
+    background-image: url("./../assets/wall.png");
+    background-attachment:fixed;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    color: white;
+    max-height: 100vh;
+}
 /* Body */
 .container-fluid{
     min-height: 100vh;
     padding: 50px;
 }
 .authLink{
-    color: black;
+    color: white;
     text-decoration: none;
-    border: 1px solid white;
     font-size: 2.5rem;
     text-decoration: none;
     transition: all 1s;
 }
 .authLink:hover{
-    color: rgb(255, 0, 255);
+    color: white;
+}
+#logo-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.D_U{
+    font-size: 50px;
+}
+.WTF{
+    font-size: 100px;
 }
 /* Navigation */
 #nav{
-    background-color: white;
+    background-color: rgba(0, 0, 0, 0.841);
+    position: sticky;
+    top: 0;
+    height: 150px;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
 }
 .nav-item{
-    color: black;
+    padding: 10px;
+    color: white;
     text-decoration: none;
-    border: 1px solid white;
+    border: 1px solid transparent;
     font-size: 2.5rem;
 }
 .nav-item:hover{
-    border-bottom-color: black;
-    color: black;
+    border-bottom-color: white;
+    color: white;
 }
 /* Sticky Notes */
-#sticky-note-container{
-    gap: 30px;
-    justify-content: center;
+.sticky-note-container{
+    padding: 20px !important;
 }
 .sticky-note{
     color: white;
     padding: 10px;
-    height: 30rem;
+    height: 300px;
+    background-color: rgba(0, 0, 0, 0.841);
 }
 .sticky-note:hover{
-    animation: jiggle forwards 2s;
-}
-.sticky-note:nth-child(1){
-    background-color: var(--global--color-red-bland);
-}
-.sticky-note:nth-child(2){
-    background-color: var(--global--color-blue-bland);
-}
-.sticky-note:nth-child(3){
-    background-color: var(--global--color-blue-dull);
-}
-.sticky-note:nth-child(4){
-    background-color: var(--global--color-orange-bland);
+
 }
 .number-container{
     width: 100%;
-}
-.numbering{
-    padding: 5px;
-    border: 2px solid white;
-    border-radius: 100%;
-    max-width: 150px;
-    width:100px;
-    min-width: 20px;
-    text-align: center;
-    font-size: 2.5rem;
+    font-weight: bolder;
 }
 .blog-title{
     margin-top: 25%;
+    text-align: center;
 }
 .blog-title h5{
     font-size: 30px;
@@ -78,7 +85,7 @@
 
 /* About */
 #about{
-    font-size: 2.5rem;
+    font-size: 30px;
     padding: 20px;
     white-space: normal;
 }

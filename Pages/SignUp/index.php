@@ -123,7 +123,7 @@
 
                 </div>
                 <div class="col-12 neonBlue" id="opposite-auth">
-                    <p>Or you can <a href="https://8000-shekog1-duwtf-i4uaekgdqdz.ws-eu101.gitpod.io/Pages/SignIn">Signin here</a></p>
+                    <p>Or you can <a href="http://localhost/projects/DearUniverseWTF/Pages/SignIn">Signin here</a></p>
                 </div>
             </div>
         </div>
@@ -162,7 +162,7 @@
                 redirect: 'follow'
                 };
 
-                fetch("https://8000-shekog1-duwtf-i4uaekgdqdz.ws-eu101.gitpod.io/api/endpoints/auth/signUp.php", requestOptions)
+                fetch("http://localhost/projects/DearUniverseWTF/api/endpoints/auth/signUp.php", requestOptions)
                 .then(response => response.text())
                 .then(result => {
                     // Show success

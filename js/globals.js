@@ -92,8 +92,8 @@ function setProfile(cookieSet){
 	let navAction = document.querySelector("#nav-action");
 
 	if(cookieSet){
-		navAction.innerHTML = `<a href="https://8000-shekog1-duwtf-i4uaekgdqdz.ws-eu101.gitpod.io/Pages/Profile">Profile</a>`;
+		navAction.innerHTML = `<a href="http://localhost/projects/DearUniverseWTF/Pages/Profile">Profile</a>`;
 	}else{
-		navAction.innerHTML = `<a href="https://8000-shekog1-duwtf-i4uaekgdqdz.ws-eu101.gitpod.io/Pages/SignUp">SignUp</a>/<a href="https://8000-shekog1-duwtf-i4uaekgdqdz.ws-eu101.gitpod.io/Pages/SignIn">SignIn</a>`;
+		navAction.innerHTML = `<a href="http://localhost/projects/DearUniverseWTF/Pages/SignUp">SignUp</a>/<a href="http://localhost/projects/DearUniverseWTF/Pages/SignIn">SignIn</a>`;
 	}
 }
