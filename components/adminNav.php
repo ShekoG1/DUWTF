@@ -28,10 +28,10 @@
         </div>
         <div class="nav-item boxRed playRed">
             <div class="nav-icon">
-                <a href="#">ICON</a>
+                <a href="http://localhost/projects/DearUniverseWTF/Admin/Content/">ICON</a>
             </div>
             <div class="nav-route">
-                <a href="#">Content</a>
+                <a href="http://localhost/projects/DearUniverseWTF/Admin/Content/">Content</a>
             </div>
         </div>
         <div class="nav-item boxBlue playBlue">

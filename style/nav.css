@@ -23,6 +23,9 @@
 .nav-item:hover{
     color:white;
 }
+#nav-action{
+    width: auto !important;
+}
 #nav-action a {
     color: white;
     text-decoration: none;
