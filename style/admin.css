@@ -8,6 +8,10 @@ body{
     color: white;
     max-height: 100vh;
 }
+#content-body{
+  background-image: none;
+  background-color: rgb(27, 27, 27);
+}
 input:focus{
     outline: none !important;
 }
@@ -189,10 +193,34 @@ input:focus{
 #content{
   position:relative;
   right:0;
-  max-width: 100%;
+  width: 100vw;
+  max-width: 100vw;
   padding: 20px;
 }
 
+/* CONTENT PAGE */
+
+.item-card{
+  border: 2px solid white;
+  padding: 20px;
+  border-radius: 20px;
+}
+#counters{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+  white-space: nowrap;
+  gap: 50px;
+  padding: 20px;
+}
+#counters div{
+  display: inline-block;
+  cursor: pointer;
+}
+tbody tr{
+  cursor: pointer;
+}
 /* ANIMATIONS */
 @keyframes fadeIn {
   0% {
