@@ -14,10 +14,11 @@
     z-index: 99;
 }
 .nav-item{
-    width:150px;
+    min-width:150px;
     min-height:100px;
+    width: fit-content;
     padding:20px;
-    font-size:30px;
+    font-size:20px;
     cursor:pointer;
 }
 .nav-item:hover{

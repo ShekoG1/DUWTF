@@ -197,6 +197,9 @@ input:focus{
   max-width: 100vw;
   padding: 20px;
 }
+.iconPlaypink{
+  color: white;
+}
 
 /* CONTENT PAGE */
 
@@ -204,6 +207,7 @@ input:focus{
   border: 2px solid white;
   padding: 20px;
   border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.69);
 }
 #counters{
   display: flex;
@@ -213,6 +217,9 @@ input:focus{
   white-space: nowrap;
   gap: 50px;
   padding: 20px;
+  background-color: rgba(0, 0, 0, 0.69);
+  /* border-top: 1px solid white;
+  border-bottom: 1px solid white; */
 }
 #counters div{
   display: inline-block;
@@ -220,6 +227,117 @@ input:focus{
 }
 tbody tr{
   cursor: pointer;
+}
+.table-container{
+  padding: 20px;
+}
+#createPost, #createCategory{
+  background-color: transparent;
+  border: none;
+}
+.action-btn{
+  background-color: transparent;
+  padding: 10px;
+  font-size: 20px;
+  color: white;
+  border: 1px solid white;
+  font-weight: bold;
+  text-shadow:
+  0 0 7px #fff,
+  0 0 10px #fff,
+  0 0 15px #fff,
+  0 0 2px #FF000F,
+  0 0 20px #FF000F,
+  0 0 15px #FF000F,
+  0 0 10px #FF000F,
+  0 0 1px #FF000F;
+  box-shadow:
+  0 0 7px #fff,
+  0 0 10px #fff,
+  0 0 15px #fff,
+  0 0 2px #FF000F,
+  0 0 20px #FF000F,
+  0 0 15px #FF000F,
+  0 0 10px #FF000F,
+  0 0 1px #FF000F;
+}
+.dataTables_filter{
+  color: white;
+  text-shadow:
+  0 0 7px #fff,
+  0 0 10px #fff,
+  0 0 15px #fff,
+  0 0 2px #FF000F,
+  0 0 20px #FF000F,
+  0 0 15px #FF000F,
+  0 0 10px #FF000F,
+  0 0 1px #FF000F;
+}
+.dataTables_filter label input{
+  background-color: transparent;
+  padding: 10px;
+  font-size: 20px;
+  color: white;
+  border: 1px solid white;
+  border-radius: 20px !important;
+  font-weight: bold;
+  text-shadow:
+  0 0 7px #fff,
+  0 0 10px #fff,
+  0 0 15px #fff,
+  0 0 2px #FF000F,
+  0 0 20px #FF000F,
+  0 0 15px #FF000F,
+  0 0 10px #FF000F,
+  0 0 1px #FF000F;
+  box-shadow:
+  0 0 7px #fff,
+  0 0 10px #fff,
+  0 0 15px #fff,
+  0 0 2px #FF000F,
+  0 0 20px #FF000F,
+  0 0 15px #FF000F,
+  0 0 10px #FF000F,
+  0 0 1px #FF000F;
+}
+.modal{
+  background-color: rgba(0, 0, 0, 0.882) !important;
+}
+.modal-content{
+  border: 1pz solid white;
+  background-color: black !important;
+  color: white;
+  box-shadow:
+  0 0 7px #fff,
+  0 0 10px #fff,
+  0 0 15px #fff,
+  0 0 2px #0003FF,
+  0 0 20px #0003FF,
+  0 0 15px #0003FF,
+  0 0 10px #0003FF,
+  0 0 1px #0003FF;
+}
+.input{
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 20px;
+  padding: 10px;
+  width: 100%;
+  color: white !important;
+}
+.input option{
+  background-color: black;
+  border: 1px solid white;
+  padding: 10px;
+  width: 100%;
+  color: white !important;
+}
+.modal-footer button{
+  background-color: transparent !important;
+  border: 1px solid white !important;
+  border-radius: 20px;
+  color: white !important;
+  padding: 15px;
 }
 /* ANIMATIONS */
 @keyframes fadeIn {

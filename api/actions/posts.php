@@ -232,5 +232,27 @@
                 return returnError($e->getMessage());
             }
         }
+        public function createPost($title,$content,$categoryId){
+            $db = $this->service->initializeDatabase('posts', 'post_id');
+            $newPost = [
+                'post_title' => $title,
+                'post_content' => $content,
+                'category_id' => $categoryId,
+            ];
+            
+            try{
+                $data = $db->insert($newPost);
+                if(empty($data)){
+                    return returnError("Could not create post");
+                }else{
+                    http_response_code(200);
+                    return json_encode(array("msg"=>"success","data"=>$data));
+                    exit;
+                }
+            }
+            catch(Exception $e){
+                return returnError($e->getMessage());
+            }
+        }
     }
 ?>

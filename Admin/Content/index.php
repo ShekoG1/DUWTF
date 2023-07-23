@@ -55,45 +55,42 @@ curl_close($curl);
 </head>
 <body id="content-body">
 
-    <div class="model-container">
-        <div class="model">
-            <div class="model-header">
-                <div id="header-content">
-
-                </div>
-                <div class="close">
-
-                </div>
-            </div>
-            <div class="model-body" id='model-body'>
-
-            </div>
-            <div class="model-footer">
-                <div id="footer-content">
-
-                </div>
-                <div class="close">
-
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div id="container">
         <?php
             include './../../components/adminNav.php';
         ?>
         <div id="content">
-            <div class="col-12 playPink">
+
+            <div class="modal" id="modal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title">Modal title</h2>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="$('#modal').modal('toggle')">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="model-body">
+                        <p>Modal body text goes here.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="boxBlue neonBlue" id="confirm">Save changes</button>
+                        <button type="button" class="boxRed neonRed" onclick="$('#modal').modal('toggle')">Close</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-12 neonPink">
                 <h1>Content</h1>
                 <p>Manage all your categories and posts here</p>
             </div>
             <div id="counters">
-                <div class="item-card boxPink neonPink">
-                    <button onclick="startModel('post')">Create Post</button>
+                <div class="item-card boxBlue">
+                    <button onclick="startModel('post')" class="neonBlue" id="createPost">Create Post</button>
                 </div>
-                <div class="item-card boxPink neonPink">
-                    <button onclick="startModel('category')">Create Category</button>
+                <div class="item-card boxBlue">
+                    <button onclick="startModel('category')" class="neonBlue" id="createCategory">Create Category</button>
                 </div>
                 <div class="item-card boxPink neonPink">
                     Total Posts: <?php echo $postsResponse->msg == "success" ? count($postsResponse->data) : 0;?>
@@ -103,84 +100,90 @@ curl_close($curl);
                 </div>
             </div>
 
-            <div class="item-card boxPink table-container col-12">
-                <table id="categoriesTable" class="display">
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Category Name</th>
-                            <th>Created At</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
+            <div class="table-container col-12">
+                <div class="item-card boxPink">
+                    <h2 class="neonPink">Categories</h2>
+                    <table id="categoriesTable" class="display">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Category Name</th>
+                                <th>Created At</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
 
-                            if($categoriesResponse->msg == "success"){
-                                foreach($categoriesResponse->data as $category){
-                                    echo <<<EOD
-                                    <tr class="boxPink playPink">
-                                        <td>
-                                            $category->category_id
-                                        </td>
-                                        <td>
-                                            $category->category_name
-                                        </td>
-                                        <td>
-                                            $category->created_at
-                                        </td>
-                                        <td>
-                                            <button class="action-btn boxPurple playPurple">Rename</button>
-                                        </td>
-                                    </tr>
-                                    EOD;
+                                if($categoriesResponse->msg == "success"){
+                                    foreach($categoriesResponse->data as $category){
+                                        echo <<<EOD
+                                        <tr class="boxPink playPink">
+                                            <td>
+                                                $category->category_id
+                                            </td>
+                                            <td>
+                                                $category->category_name
+                                            </td>
+                                            <td>
+                                                $category->created_at
+                                            </td>
+                                            <td>
+                                                <button class="action-btn boxPurple playPurple" onclick="startModel('renamecategory', 'NULL', 'NULL', $category->category_id)">Rename</button>
+                                            </td>
+                                        </tr>
+                                        EOD;
+                                    }
                                 }
-                            }
-                        ?>
-                    </tbody>
-                </table>
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
-            <div class="item-card boxPink table-container col-12">
-                <table id="postsTable" class="display">
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Category</th>
-                            <th>Title</th>
-                            <th>Created At</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
+            <div class="table-container col-12">
+                <div class="item-card boxPink">
+                    <h2 class="neonPink">Posts</h2>
+                    <table id="postsTable" class="display">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Category</th>
+                                <th>Title</th>
+                                <th>Created At</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
 
-                            if($postsResponse->msg == "success"){
-                                foreach($postsResponse->data as $post){
-                                    echo <<<EOD
-                                    <tr class="boxPink playPink">
-                                        <td>
-                                            $post->post_id
-                                        </td>
-                                        <td>
-                                            $post->category_id
-                                        </td>
-                                        <td>
-                                            $post->post_title
-                                        </td>
-                                        <td>
-                                            $post->created_at
-                                        </td>
-                                        <td>
-                                            <button class="action-btn boxPurple playPurple">View Post</button>
-                                        </td>
-                                    </tr>
-                                    EOD;
+                                if($postsResponse->msg == "success"){
+                                    foreach($postsResponse->data as $post){
+                                        echo <<<EOD
+                                        <tr class="boxPink playPink">
+                                            <td>
+                                                $post->post_id
+                                            </td>
+                                            <td>
+                                                $post->category_id
+                                            </td>
+                                            <td>
+                                                $post->post_title
+                                            </td>
+                                            <td>
+                                                $post->created_at
+                                            </td>
+                                            <td>
+                                                <button class="action-btn boxPurple playPurple">View Post</button>
+                                            </td>
+                                        </tr>
+                                        EOD;
+                                    }
                                 }
-                            }
-                        ?>
-                    </tbody>
-                </table>
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
@@ -192,32 +195,23 @@ curl_close($curl);
             // options
         });
 
-        function startModel(intent, errorMsg = "NULL", successMsg = "NULL"){
+        function startModel(intent, errorMsg = "NULL", successMsg = "NULL", categoryId = -1){
             const POST_FORM = `
                 <div class='form-input'>
                     <p class="label">Title</p>
-                    <input type="text" placeholder="Super Cool Title">
+                    <input type="text" class="boxBlue neonBlue input" id="post-title" placeholder="Super Cool Title">
                     <p class="sub-label">This is the title that will be displayed to all viewers</p>
                 </div>
                 <div class='form-input'>
                     <p class="label">Categpry</p>
-                    <select>
+                    <select class="input boxBlue neonBlue" id="post-select-category">
                         <option value="NULL" default>--SELECT--</option>
                         <?php
                             if($categoriesResponse->msg == "success"){
                                 foreach($categoriesResponse->data as $category){
                                     echo <<<EOD
-                                        <option class="boxBlue playBlue">
-                                            $category->category_id
-                                        </option>
-                                        <option class="boxBlue playBlue">
-                                            $category->category_name
-                                        </option>
-                                        <option class="boxBlue playBlue">
-                                            $category->created_at
-                                        </option>
-                                        <option class="boxBlue playBlue">
-                                            <button class="action-btn boxPurple playPurple">Rename</button>
+                                        <option class="boxBlue playBlue" value="$category->category_id">
+                                            <span>$category->category_name</span> | <span>$category->created_at</span>
                                         </option>
                                     EOD;
                                 }
@@ -232,29 +226,50 @@ curl_close($curl);
                 </div>
                 <div class='form-input'>
                     <p class="label">Content</p>
-                    <textarea placeholder="All your content here">
-                    </textarea>
+                    <textarea class="boxBlue neonBlue input" id="post-content" placeholder="All your content here"></textarea>
                     <p class="sub-label">This is the content of your post</p>
                 </div>
             `;
             const CATEGORY_FORM = `
                 <div class='form-input'>
                     <p class="label">Title</p>
-                    <input type="text" placeholder="Super Cool Title">
+                    <input class="input" id="category-title" type="text" placeholder="Super Cool Title">
+                    <p class="sub-label">This is the title that will be displayed to all viewers</p>
+                </div>
+            `;
+            const RENAME_CATEGORY_FORM = `
+                <div class='form-input'>
+                    <input type="hidden" id="categoryId" value="${categoryId}">
+                    <p class="label">Title</p>
+                    <input class="input" id="category-title" type="text" placeholder="Super Cool Title">
                     <p class="sub-label">This is the title that will be displayed to all viewers</p>
                 </div>
             `;
 
-            switch (key) {
+            switch (intent) {
                 case 'post':
-                    document.querySelector('#header-content').innerHTML = "<h1 class='neonRed'>Create A Post</h1>"
+                    $('#modal').modal('toggle');
+                    document.querySelector(".modal-title").innerHTML = "Create A Post";
                     document.querySelector('#model-body').innerHTML = POST_FORM;
-                    document.querySelector('#footer-content').innerHTML = "<button onclick='createPost'>Create Post</button>";
+                    $("#confirm").on('click',()=>{
+                        createPost();
+                    })
                 break;
                 case 'category':
-                    document.querySelector('#header-content').innerHTML = "<h1 class='neonRed'>Create A Category</h1>"
+                    $('#modal').modal('toggle');
+                    document.querySelector('.modal-title').innerHTML = "Create A Category"
                     document.querySelector('#model-body').innerHTML = CATEGORY_FORM;
-                    document.querySelector('#footer-content').innerHTML = "<button onclick='createPost'>Create Category</button>";
+                    $("#confirm").on('click',()=>{
+                        createCategory();
+                    })
+                break;
+                case 'renamecategory':
+                    $('#modal').modal('toggle');
+                    document.querySelector('.modal-title').innerHTML = "Rename A Category"
+                    document.querySelector('#model-body').innerHTML = RENAME_CATEGORY_FORM;
+                    $("#confirm").on('click',()=>{
+                        renameCategory();
+                    })
                 break;
                 case 'error':
                     
@@ -265,6 +280,73 @@ curl_close($curl);
                 default:
                 break;
             }
+        }
+
+        function createPost(){
+            const postTitle = document.querySelector("#post-title").value;
+            const postContent = document.querySelector('#post-content').innerHTML;
+            const categoryId = document.querySelector('#post-select-category').value;
+
+            // Fetch function to create Post
+            var formdata = new FormData();
+            formdata.append("postTitle", postTitle);
+            formdata.append("postContent", postContent);
+            formdata.append("categoryId", categoryId);
+
+            var requestOptions = {
+            method: 'POST',
+            body: formdata,
+            redirect: 'follow'
+            };
+
+            fetch("http://localhost/projects/DearUniverseWTF/api/endpoints/posts/createPost.php", requestOptions)
+            .then(response => response.text())
+            .then(result => success("Post Created Successfully"))
+            .catch(error => console.log('error', error));
+            
+        }
+        function createCategory(){
+            const categoryTitle = document.querySelector('#category-title').value;
+
+            var formdata = new FormData();
+            formdata.append("categoryTitle", categoryTitle);
+
+            var requestOptions = {
+            method: 'POST',
+            body: formdata,
+            redirect: 'follow'
+            };
+
+            fetch("http://localhost/projects/DearUniverseWTF/api/endpoints/categories/createCategory.php", requestOptions)
+            .then(response => response.text())
+            .then(result => success("Category Created Success"))
+            .catch(error => console.log('error', error));
+            
+        }
+        function renameCategory(){
+            const categoryId = document.querySelector('#categoryId').value;
+            const categoryName = document.querySelector('#category-title').value;
+
+            var formdata = new FormData();
+            formdata.append("categoryId", categoryId);
+            formdata.append("categoryNewname", categoryName);
+
+            var requestOptions = {
+            method: 'POST',
+            body: formdata,
+            redirect: 'follow'
+            };
+
+            fetch("http://localhost/projects/DearUniverseWTF/api/endpoints/categories/renameCategory.php", requestOptions)
+            .then(response => response.text())
+            .then(result => success(result))
+            .catch(error => console.log('error', error));
+            
+        }
+
+        function success(msg){
+            alert(msg);
+            window.location.reload();
         }
     </script>
 </body>
