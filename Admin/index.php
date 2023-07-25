@@ -1,8 +1,4 @@
 <?php
-    session_start();
-    include "../api/endpoints/email/sendEmail.php";
-    $otp = sendOTPmail();
-    $_SESSION['otp'] = $otp;
 
 ?>
 <!DOCTYPE html>
@@ -59,7 +55,32 @@
 
             //Fetch Query to endpoint
 
-            window.location.href= "./Dashboard/";
+            var myHeaders = new Headers();
+            myHeaders.append("Cookie", "PHPSESSID=5u23lk0g3ncl4j53ie1hg1g2ch");
+
+            var formdata = new FormData();
+            formdata.append("char1", char1);
+            formdata.append("char2", char2);
+            formdata.append("char3", char3);
+            formdata.append("char4", char4);
+            formdata.append("char5", char5);
+
+            var requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: formdata,
+            redirect: 'follow'
+            };
+
+            fetch("http://localhost/projects/DearUniverseWTF/Admin/authorize.php", requestOptions)
+            .then(response => response.text())
+            .then(result => success(result))
+            .catch(error => console.log('error', error));
+        }
+        function success(result){
+            if(result == "success"){
+                window.location.href= "./Dashboard/";
+            }
         }
 
     </script>

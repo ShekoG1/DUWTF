@@ -9,9 +9,10 @@
         empty($_POST['char5'])
     ){
     // Throw Error
+    echo "failed";
     }else{
         // Validate OTP
-        $correctOtp = explode("",$_SESSION['otp']);
+        $correctOtp = str_split($_SESSION['otp']);
 
         if(
             $_POST['char1'] == $correctOtp[0] &&
@@ -21,8 +22,10 @@
             $_POST['char5'] == $correctOtp[4] 
         ){
             // Return Success
+            echo "success";
         }else{
             // Return Error
+            echo "failed1";
         }
     }
 

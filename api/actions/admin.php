@@ -9,7 +9,24 @@
         }
 
         public function signIn($OTP){
-
+            $db = $this->service->initializeDatabase('adminSignin', 'id');
+            $newOTP = [
+                'otp' => $OTP,
+            ];
+            
+            try{
+                $data = $db->insert($newOTP);
+                if(empty($data)){
+                    return returnError("Could not create otp insert");
+                }else{
+                    http_response_code(200);
+                    return json_encode(array("msg"=>"success","data"=>$data));
+                    exit;
+                }
+            }
+            catch(Exception $e){
+                return returnError($e->getMessage());
+            }
         }
 
         public function getUsefulstats(){
