@@ -68,6 +68,9 @@
             .catch(error => console.log('error', error));
         }
         function sendOTPmail(){
+            
+                var formdata = new FormData();
+
                 var requestOptions = {
                 method: 'POST',
                 body: formdata,
@@ -77,17 +80,18 @@
                 fetch("http://localhost/projects/DearUniverseWTF/api/endpoints/email/sendOTP.php", requestOptions)
                 .then(response => response.text())
                 .then(result => {
-                    response = JSON.parse(result);
-                    if(response.msg == "success"){
-                        showSuccess("<p>Comment added successfully</p>")
-                        sleep(3000);
-                        window.location.reload();
-                    }else{
-                        showError("<p>Could not add comment!</p>")
-                    }
+                    alert(result)
+                    // response = JSON.parse(result);
+                    // if(response.msg == "success"){
+                    //     showSuccess("<p>Comment added successfully</p>")
+                    //     sleep(3000);
+                    //     window.location.reload();
+                    // }else{
+                    //     showError("<p>Could not add comment!</p>")
+                    // }
                 })
                 .catch(error => {
-                    showError(`<p>Error: ${error}</p>`)
+                    alert(`<p>Error: ${error}</p>`)
                 });
         }
         function success(result){
