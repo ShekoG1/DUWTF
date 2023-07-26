@@ -1,6 +1,3 @@
-<?php
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,7 +32,9 @@
             </div>
         </div>
     </div>
-    <script>
+    <script defer>
+        sendOTPmail();
+
         function jumpToNextField(currentField, nextFieldId) {
             if(nextFieldId != -1){
                 if (currentField.value.length >= currentField.maxLength) {
@@ -47,23 +46,14 @@
             }
         }
         function validate(){
-            let char1 = document.querySelector("#char1").value;
-            let char2 = document.querySelector("#char2").value;
-            let char3 = document.querySelector("#char3").value;
-            let char4 = document.querySelector("#char4").value;
-            let char5 = document.querySelector("#char5").value;
+            let otp = document.querySelector("#char1").value + document.querySelector("#char2").value + document.querySelector("#char3").value + document.querySelector("#char4").value + document.querySelector("#char5").value;
 
             //Fetch Query to endpoint
-
             var myHeaders = new Headers();
             myHeaders.append("Cookie", "PHPSESSID=5u23lk0g3ncl4j53ie1hg1g2ch");
 
             var formdata = new FormData();
-            formdata.append("char1", char1);
-            formdata.append("char2", char2);
-            formdata.append("char3", char3);
-            formdata.append("char4", char4);
-            formdata.append("char5", char5);
+            formdata.append("otp", otp);
 
             var requestOptions = {
             method: 'POST',
@@ -72,10 +62,33 @@
             redirect: 'follow'
             };
 
-            fetch("http://localhost/projects/DearUniverseWTF/Admin/authorize.php", requestOptions)
+            fetch("http://localhost/projects/DearUniverseWTF/api/endpoints/admin/authorize.php", requestOptions)
             .then(response => response.text())
             .then(result => success(result))
             .catch(error => console.log('error', error));
+        }
+        function sendOTPmail(){
+                var requestOptions = {
+                method: 'POST',
+                body: formdata,
+                redirect: 'follow'
+                };
+
+                fetch("http://localhost/projects/DearUniverseWTF/api/endpoints/email/sendOTP.php", requestOptions)
+                .then(response => response.text())
+                .then(result => {
+                    response = JSON.parse(result);
+                    if(response.msg == "success"){
+                        showSuccess("<p>Comment added successfully</p>")
+                        sleep(3000);
+                        window.location.reload();
+                    }else{
+                        showError("<p>Could not add comment!</p>")
+                    }
+                })
+                .catch(error => {
+                    showError(`<p>Error: ${error}</p>`)
+                });
         }
         function success(result){
             if(result == "success"){

@@ -8,7 +8,7 @@
             $this->service = $service;
         }
 
-        public function signIn($OTP){
+        public function saveOTP($OTP){
             $db = $this->service->initializeDatabase('adminSignin', 'id');
             $newOTP = [
                 'otp' => $OTP,
@@ -17,7 +17,9 @@
             try{
                 $data = $db->insert($newOTP);
                 if(empty($data)){
-                    return returnError("Could not create otp insert");
+                    http_response_code(200);
+                    return json_encode(array("msg"=>"failed","description"=>"No data"));
+                    exit;
                 }else{
                     http_response_code(200);
                     return json_encode(array("msg"=>"success","data"=>$data));
@@ -25,7 +27,36 @@
                 }
             }
             catch(Exception $e){
-                return returnError($e->getMessage());
+                http_response_code(200);
+                return json_encode(array("msg"=>"failed","description"=>$e->getMessage()));
+                exit;
+            }
+        }
+
+        public function signIn($OTP){
+            $db = $service->initializeDatabase('adminSignin', 'id');
+
+            $query = [
+                'select' => 'otp',
+                'from'   => 'adminSignin',
+                'limit' => 1,
+                'order' =>'created_at.desc'
+            ];
+            
+            try{
+                $otp = $db->createCustomQuery($query)->getResult();
+                if($OTP = $otp[0]->otp){
+                    http_response_code(200);
+                    return json_encode(array("msg"=>"success","data"=>"No data to return"));
+                    exit;
+                }else{
+                    http_response_code(200);
+                    return json_encode(array("msg"=>"failed","description"=>"OTP entered is incorrect"));
+                    exit;
+                }
+            }
+            catch(Exception $e){
+                echo $e->getMessage();
             }
         }
 
