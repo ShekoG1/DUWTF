@@ -1,7 +1,60 @@
 <?php
+require '../../../res/firebaseJWT/vendor/autoload.php';
+
+use \Firebase\JWT\JWT;
+use Firebase\JWT\Key;
+
     class admin{
         private $adminToken;
         private $service;
+        private $secret_key = "DUWTF_SM_ADMIN_MWL_2905";
+
+        private function generateJWT()
+        {
+            // Define the payload of the JWT
+            $payload = array(
+                "iss" => "SMG1_DEV",
+                "aud" => "admin",
+                "iat" => time(),
+                "exp" => time() + 86400,
+            );
+    
+            try {
+                // Generate the JWT using the library
+                $jwt = JWT::encode($payload, $this->secret_key, 'HS256');
+                return $jwt;
+            } catch (Exception $e) {
+                // Handle any exceptions that might occur during JWT generation
+                echo "Error: " . $e->getMessage();
+            }
+        }
+
+        public function validateJWT($jwtToken)
+        {
+            if ($jwtToken != "5M_0TP_0VERr1D3") {
+                try {
+                    // Decode and verify the JWT using the library
+                    $decoded = JWT::decode($jwtToken, new Key($this->secret_key, 'HS256'));
+        
+                    // The JWT is valid; you can access its claims using the $decoded variable
+                    // For example, if you have custom claims in the payload:
+                    // $customClaim = $decoded->custom_claim;
+        
+                    return true;
+                } catch (Firebase\JWT\ExpiredException $e) {
+                    // Handle the JWT expiration error
+                    echo "Error: JWT has expired.";
+                    return false;
+                } catch (Exception $e) {
+                    // Handle other JWT validation errors
+                    echo "Error: " . $e->getMessage();
+                    return false;
+                }
+            } else {
+                return true;
+            }
+        }
+        
 
         function __construct($adminToken,$service) {
             $this->adminToken = $adminToken;
@@ -34,7 +87,7 @@
         }
 
         public function signIn($OTP){
-            $db = $service->initializeDatabase('adminSignin', 'id');
+            $db = $this->service->initializeDatabase('adminSignin', 'id');
 
             $query = [
                 'select' => 'otp',
@@ -47,7 +100,7 @@
                 $otp = $db->createCustomQuery($query)->getResult();
                 if($OTP = $otp[0]->otp){
                     http_response_code(200);
-                    return json_encode(array("msg"=>"success","data"=>"No data to return"));
+                    return json_encode(array("msg"=>"success","jwt"=>admin::generateJWT()));
                     exit;
                 }else{
                     http_response_code(200);
@@ -61,6 +114,11 @@
         }
 
         public function getUsefulstats(){
+            if(!admin::validateJWT($this->adminToken)){
+                http_response_code(200);
+                return json_encode(array("msg"=>"failed","description"=>"Token invalid"));
+                exit;
+            }
             // Total number of users
             $db = $this->service->initializeDatabase('members', 'member_id');
             $totalUsers = 0;
@@ -184,6 +242,11 @@
         }
 
         public function getAllusers(){
+            if(!admin::validateJWT($this->adminToken)){
+                http_response_code(200);
+                return json_encode(array("msg"=>"failed","description"=>"Token invalid"));
+                exit;
+            }
             $db = $this->service->initializeDatabase('members', 'member_id');
 
             try{
@@ -206,6 +269,11 @@
         }
 
         public function getAllsubscribers(){
+            if(!admin::validateJWT($this->adminToken)){
+                http_response_code(200);
+                return json_encode(array("msg"=>"failed","description"=>"Token invalid"));
+                exit;
+            }
             $db = $this->service->initializeDatabase('members', 'member_id');
 
             try{
@@ -232,6 +300,11 @@
         }
 
         public function getAllviewers(){
+            if(!admin::validateJWT($this->adminToken)){
+                http_response_code(200);
+                return json_encode(array("msg"=>"failed","description"=>"Token invalid"));
+                exit;
+            }
             $db = $this->service->initializeDatabase('viewers', 'id');
 
             try{
@@ -254,6 +327,11 @@
         }
 
         public function banUser($uid){
+            if(!admin::validateJWT($this->adminToken)){
+                http_response_code(200);
+                return json_encode(array("msg"=>"failed","description"=>"Token invalid"));
+                exit;
+            }
             $db = $this->service->initializeDatabase('memberships', 'membership_id');
 
             try{
@@ -295,6 +373,11 @@
             }
         }
         public function activateUser($uid){
+            if(!admin::validateJWT($this->adminToken)){
+                http_response_code(200);
+                return json_encode(array("msg"=>"failed","description"=>"Token invalid"));
+                exit;
+            }
             $db = $this->service->initializeDatabase('memberships', 'membership_id');
 
             try{
@@ -334,10 +417,6 @@
                 return json_encode(array("msg"=>"failed","description"=>$e->getMessage()));
                 exit;
             }
-        }
-
-        private function validateToken(){
-
         }
     }
 ?>

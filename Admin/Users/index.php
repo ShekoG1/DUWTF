@@ -1,23 +1,27 @@
 <?php
 // COOKIE CHECK HERE
+if(!isset($_COOKIE["DUWTF_ADMIN"])){
+    $kick = true;
+}else{
+    $kick = false;
+}
 
-// Initialize cURL
 $curl = curl_init();
 
-// Get All Posts
 curl_setopt_array($curl, array(
-CURLOPT_URL => 'http://localhost/projects/DearUniverseWTF/api/endpoints/admin/getAllusers.php',
-CURLOPT_RETURNTRANSFER => true,
-CURLOPT_ENCODING => '',
-CURLOPT_MAXREDIRS => 10,
-CURLOPT_TIMEOUT => 0,
-CURLOPT_FOLLOWLOCATION => true,
-CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-CURLOPT_CUSTOMREQUEST => 'POST',
+  CURLOPT_URL => 'http://localhost/projects/DearUniverseWTF/api/endpoints/admin/getAllusers.php',
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_ENCODING => '',
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 0,
+  CURLOPT_FOLLOWLOCATION => true,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => 'POST',
+  CURLOPT_POSTFIELDS => array('adminToken' => $_COOKIE["DUWTF_ADMIN"]),
 ));
-$postsResponse = json_decode(curl_exec($curl));
 
-// Close cURL
+$usersResponse = json_decode(curl_exec($curl));
+
 curl_close($curl);
 ?>
 <!DOCTYPE html>
@@ -47,38 +51,37 @@ curl_close($curl);
         <div id="content">
             <div class="table-container col-12">
                 <div class="item-card boxPink">
-                    <h2 class="neonPink">Posts</h2>
-                    <table id="postsTable" class="display">
+                    <h2 class="neonPink">Users</h2>
+                    <table id="usersTable" class="display">
                         <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>Category</th>
-                                <th>Title</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Email Address</th>
                                 <th>Created At</th>
-                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-
-                                if($postsResponse->msg == "success"){
-                                    foreach($postsResponse->data as $post){
+                                if($usersResponse->msg == "success"){
+                                    foreach($usersResponse->data as $user){
                                         echo <<<EOD
                                         <tr class="boxPink playPink">
                                             <td>
-                                                $post->post_id
+                                                $user->member_id
                                             </td>
                                             <td>
-                                                $post->category_id
+                                                $user->member_first_name
                                             </td>
                                             <td>
-                                                $post->post_title
+                                                $user->member_last_name
                                             </td>
                                             <td>
-                                                $post->created_at
+                                                $user->member_email_address
                                             </td>
                                             <td>
-                                                <button class="action-btn boxPurple playPurple">View Post</button>
+                                                $user->created_at
                                             </td>
                                         </tr>
                                         EOD;
@@ -91,5 +94,10 @@ curl_close($curl);
             </div>
         </div>
     </div>
+    <script>
+        let usersTable = new DataTable('#usersTable', {
+            // options
+        });
+    </script>
 </body>
 </html>

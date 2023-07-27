@@ -64,7 +64,7 @@
 
             fetch("http://localhost/projects/DearUniverseWTF/api/endpoints/admin/authorize.php", requestOptions)
             .then(response => response.text())
-            .then(result => success(result))
+            .then(result => success(JSON.parse(result)))
             .catch(error => console.log('error', error));
         }
         function sendOTPmail(){
@@ -80,23 +80,28 @@
                 fetch("http://localhost/projects/DearUniverseWTF/api/endpoints/email/sendOTP.php", requestOptions)
                 .then(response => response.text())
                 .then(result => {
-                    alert(result)
-                    // response = JSON.parse(result);
-                    // if(response.msg == "success"){
-                    //     showSuccess("<p>Comment added successfully</p>")
-                    //     sleep(3000);
-                    //     window.location.reload();
-                    // }else{
-                    //     showError("<p>Could not add comment!</p>")
-                    // }
+                    alert("You've got mail! Check your email for your admin OTP");
                 })
                 .catch(error => {
                     alert(`<p>Error: ${error}</p>`)
                 });
         }
         function success(result){
-            if(result == "success"){
+            if(result.msg == "success"){
+                const jwt = result.jwt;
+                const days = 1;
+                // Set cookie
+                var expires = "";
+                var date = new Date();
+                date.setTime(date.getTime() + (days*24*60*60*1000));
+                expires = "; expires=" + date.toUTCString();
+                
+                document.cookie = "DUWTF_ADMIN=" + (jwt || "")  + expires + "; path=/";
+
+                // Relocate
                 window.location.href= "./Dashboard/";
+            }else{
+                alert("Error: "+JSON.stringify(result));
             }
         }
 

@@ -9,7 +9,7 @@ body{
     max-height: 100vh;
 }
 #content-body{
-  background-image: none;
+  background-image: none !important;
   background-color: rgb(27, 27, 27);
 }
 input:focus{

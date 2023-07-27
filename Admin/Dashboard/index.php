@@ -16,7 +16,7 @@
     <!-- JAVASCRIPT -->
     <!-- <script src="./../js/globals.js"></script> -->
 </head>
-<body>
+<body id="content-body">
     <div id="container">
         <?php
             include './../../components/adminNav.php';
