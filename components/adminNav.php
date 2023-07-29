@@ -96,7 +96,7 @@
         </div>
         <div class="nav-item boxBlue playBlue">
             <div class="nav-icon">
-                <a href="#">
+                <a href="http://localhost/projects/DearUniverseWTF/Admin/Users">
                     <svg
                     width="24"
                     height="24"
@@ -118,12 +118,12 @@
                 </a>
             </div>
             <div class="nav-route">
-                <a href="#">Users</a>
+                <a href="http://localhost/projects/DearUniverseWTF/Admin/Users">Users</a>
             </div>
         </div>
         <div class="nav-item boxLime playLime">
             <div class="nav-icon">
-                <a href="#">
+                <a href="http://localhost/projects/DearUniverseWTF/Admin/Subscriptions">
                     <svg
                     width="24"
                     height="24"
@@ -141,12 +141,12 @@
                 </a>
             </div>
             <div class="nav-route">
-                <a href="#">Subscriptions</a>
+                <a href="http://localhost/projects/DearUniverseWTF/Admin/Subscriptions">Subscriptions</a>
             </div>
         </div>
         <div class="nav-item boxPurple playPurple">
             <div class="nav-icon">
-                <a href="#">
+                <a href="http://localhost/projects/DearUniverseWTF/Admin/News">
                     <svg
                     width="24"
                     height="24"
@@ -164,7 +164,7 @@
                 </a>
             </div>
             <div class="nav-route">
-                <a href="#">News</a>
+                <a href="http://localhost/projects/DearUniverseWTF/Admin/News">News</a>
             </div>
         </div>
     </div>

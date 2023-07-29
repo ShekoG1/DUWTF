@@ -1,0 +1,40 @@
+.form-input-number{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 500;
+    transition: all 1s;
+    cursor: pointer;
+}
+.form-input-number:hover{
+    font-weight: 700;
+}
+.newsletter-action-buttons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+.label{
+    font-size: 25px;
+}
+.sub-label{
+    padding: 20px;
+    font-size: 15px;
+}
+.select-table-item{
+    transition: all 2s;
+    box-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px #FF00D6,
+    0 0 102px #FF00D6,
+    0 0 151px #FF00D6 !important;
+}
+table,thead, tbody, tfoot, tr, td, th {
+    border-color: white !important;
+    border-width: 0;
+}

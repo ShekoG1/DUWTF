@@ -117,6 +117,8 @@ curl_close($curl);
 
                                 if($categoriesResponse->msg == "success"){
                                     foreach($categoriesResponse->data as $category){
+                                        $tempDate = new DateTime($category->created_at);
+                                        $tempDate = $tempDate->format('F j, Y \a\t H:i:s');
                                         echo <<<EOD
                                         <tr class="boxPink playPink">
                                             <td>
@@ -126,7 +128,7 @@ curl_close($curl);
                                                 $category->category_name
                                             </td>
                                             <td>
-                                                $category->created_at
+                                            $tempDate
                                             </td>
                                             <td>
                                                 <button class="action-btn boxPurple playPurple" onclick="startModel('renamecategory', 'NULL', 'NULL', $category->category_id)">Rename</button>
@@ -159,6 +161,8 @@ curl_close($curl);
 
                                 if($postsResponse->msg == "success"){
                                     foreach($postsResponse->data as $post){
+                                        $tempDate = new DateTime($post->created_at);
+                                        $tempDate = $tempDate->format('F j, Y \a\t H:i:s');
                                         echo <<<EOD
                                         <tr class="boxPink playPink">
                                             <td>
@@ -171,7 +175,7 @@ curl_close($curl);
                                                 $post->post_title
                                             </td>
                                             <td>
-                                                $post->created_at
+                                                $tempDate
                                             </td>
                                             <td>
                                                 <button class="action-btn boxPurple playPurple">View Post</button>

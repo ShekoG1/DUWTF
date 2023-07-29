@@ -11,8 +11,8 @@ if(empty($adminToken)){
     throwError("Admin token cannot be empty!");
 }
 
-$auth = new auth($adminToken,$service);
+$admin = new admin($adminToken,$service);
 
-$result = $auth->getAllsubscribers();
+$result = $admin->getAllsubscribers();
 
 echo $result;

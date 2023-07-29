@@ -9,7 +9,7 @@ if(!isset($_COOKIE["DUWTF_ADMIN"])){
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => 'http://localhost/projects/DearUniverseWTF/api/endpoints/admin/getAllusers.php',
+  CURLOPT_URL => 'http://localhost/projects/DearUniverseWTF/api/endpoints/admin/getAllsubscribers.php',
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => '',
   CURLOPT_MAXREDIRS => 10,
@@ -20,7 +20,7 @@ curl_setopt_array($curl, array(
   CURLOPT_POSTFIELDS => array('adminToken' => $_COOKIE["DUWTF_ADMIN"]),
 ));
 
-$usersResponse = json_decode(curl_exec($curl));
+$subscribersResponse = json_decode(curl_exec($curl));
 
 curl_close($curl);
 ?>
@@ -50,37 +50,48 @@ curl_close($curl);
         ?>
         <div id="content">
             <div class="table-container col-12">
-                <div class="item-card boxPink">
-                    <h2 class="neonPink">Users</h2>
-                    <table id="usersTable" class="display">
+                <div class="item-card boxLime">
+                    <h2 class="neonLime">subscribers</h2>
+                    <table id="subscribersTable" class="display">
                         <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Email Address</th>
+                                <th>Member Id</th>
+                                <th>Membership Uid</th>
+                                <th>Status</th>
                                 <th>Created At</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-                                if($usersResponse->msg == "success"){
-                                    foreach($usersResponse->data as $user){
-                                        $tempDate = new DateTime($user->created_at);
+                                if($subscribersResponse->msg == "success"){
+                                    foreach($subscribersResponse->data as $subscriber){
+                                        if($subscriber->membership_status == "active"){
+                                            $text = "neonLime";
+                                            $box = "boxLime";
+                                        }else{
+                                            $text = "neonRed";
+                                            $box = "boxRed";
+                                        }
+
+                                        $tempDate = new DateTime($subscriber->created_at);
                                         $tempDate = $tempDate->format('F j, Y \a\t H:i:s');
+
                                         echo <<<EOD
-                                        <tr class="boxPink playPink">
+                                        <tr class="boxLime playLime">
                                             <td>
-                                                $user->member_id
+                                                $subscriber->membership_id
                                             </td>
                                             <td>
-                                                $user->member_first_name
+                                                $subscriber->member_id
                                             </td>
                                             <td>
-                                                $user->member_last_name
+                                                $subscriber->membership_uid
                                             </td>
                                             <td>
-                                                $user->member_email_address
+                                                <div class="status $box $text">
+                                                $subscriber->membership_status
+                                                </div>
                                             </td>
                                             <td>
                                                 $tempDate
@@ -97,7 +108,7 @@ curl_close($curl);
         </div>
     </div>
     <script>
-        let usersTable = new DataTable('#usersTable', {
+        let subscribersTable = new DataTable('#subscribersTable', {
             // options
         });
 

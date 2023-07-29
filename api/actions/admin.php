@@ -274,7 +274,7 @@ use Firebase\JWT\Key;
                 return json_encode(array("msg"=>"failed","description"=>"Token invalid"));
                 exit;
             }
-            $db = $this->service->initializeDatabase('members', 'member_id');
+            $db = $this->service->initializeDatabase('memberships', 'membership_id');
 
             try{
                 $data = $db->fetchAll()->getResult();

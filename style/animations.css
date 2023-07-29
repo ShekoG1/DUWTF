@@ -1,0 +1,31 @@
+.fade-in {
+  transition: all 2.5s;
+	animation: fadeIn 2s;
+  opacity: 1;
+  height: auto;
+}
+.fade-out {
+  transition: all 2.5s;
+	animation: fadeOut 1s;
+  opacity: 0;
+  height: 0;
+}
+
+@keyframes fadeIn {
+  from {
+  	opacity: 0;
+  }
+  to {
+ 	opacity: 1;
+  }
+}
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+        height: auto;
+    }
+    100%{
+       opacity: 0;
+       height: 0;
+    }
+  }

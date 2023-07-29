@@ -3,18 +3,24 @@
     require "../../actions/email.php";
 
     // Declarations
-    $recipientEmails = $_POST['recipientEmails'];
+    $to = $_POST['to'];
+    $subject = $_POST['subject'];
+    $body = $_POST['body'];
 
     // Validations
-    if(empty($recipientEmails)){
-        throwError("User Id cannot be empty");
+    if(empty($to)){
+        throwError("Send-to list cannot be empty");
+    }
+    if(empty($subject)){
+        throwError("Subject cannot be empty");
+    }
+    if(empty($body)){
+        throwError("Body cannot be empty");
     }
 
-    $userId = trim($recipientEmails);
+    $email = new email();
 
-    $email = new email($phpMailer,$fromEmail);
-
-    $result = $email->sendNewsletter($userId,$postId);
+    $result = $email->sendNewsletter($to, $subject, $body);
 
     echo $result;
 ?>
