@@ -212,6 +212,9 @@ $postCreated = $postResponsedata[0]->created_at;
             </div>
         </div>
     </div>
+    <?php
+        include "../../components/footer.php"
+    ?>
     <script>
         function makeComment(){
             let comment = document.querySelector("#comment").value;

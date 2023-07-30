@@ -299,4 +299,7 @@
         setProfile(<?php echo $cookieSet; ?>);
     </script>
 </body>
+<?php
+    include "../../components/footer.php"
+?>
 </html>

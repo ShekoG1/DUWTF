@@ -187,6 +187,9 @@ $postContent = $postResponsedata[0]->post_content;
             </div>
         </div>
     </div>
+    <?php
+        include "../../components/footer.php"
+    ?>
     <script>
         function makeComment(){
             let comment = 

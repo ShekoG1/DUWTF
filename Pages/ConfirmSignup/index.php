@@ -46,5 +46,8 @@
             <p class="neonText">Congrats on signing up for the coolest blog ever!<br/>You may now sign in <a class="neonBlue" href="http://localhost/projects/DearUniverseWTF/Pages/SignIn">here</a></p>
         </div>
     </div>
+    <?php
+        include "../../components/footer.php"
+    ?>
 </body>
 </html>

@@ -9,8 +9,8 @@ body{
     max-height: 100vh;
 }
 #content{
-    position: relative;
-    top: 100px;
+    /* position: relative;
+    top: 100px; */
     padding: 50px;
 }
 #post-details{

@@ -147,6 +147,9 @@
             </div>
         </div>
     </div>
+    <?php
+        include "../../components/footer.php"
+    ?>
 
     <script>
         const cookieSet = <?php echo $cookieSet; ?>;

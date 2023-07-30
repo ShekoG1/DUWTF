@@ -47,6 +47,7 @@ curl_close($curl);
     <!-- STYLE -->
     <link rel="stylesheet" href="./../../style/globals.css">
     <link rel="stylesheet" href="./../../style/admin.css">
+    <link rel="stylesheet" href="./../../style/Admin/content.css">
     <!-- JAVASCRIPT -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <!-- DATATABLES -->
@@ -62,7 +63,7 @@ curl_close($curl);
         <div id="content">
 
             <div class="modal" id="modal" tabindex="-1" role="dialog">
-                <div class="modal-dialog" role="document">
+                <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                     <div class="modal-header">
                         <h2 class="modal-title">Modal title</h2>
@@ -74,7 +75,7 @@ curl_close($curl);
                         <p>Modal body text goes here.</p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="boxBlue neonBlue" id="confirm">Save changes</button>
+                        <button type="button" class="boxLime neonLime" id="confirm">Save changes</button>
                         <button type="button" class="boxRed neonRed" onclick="$('#modal').modal('toggle')">Close</button>
                     </div>
                     </div>
@@ -157,34 +158,42 @@ curl_close($curl);
                             </tr>
                         </thead>
                         <tbody>
-                            <?php
+                        <?php
+if ($postsResponse->msg == "success") {
+    foreach ($postsResponse->data as $post) {
+        $tempDate = new DateTime($post->created_at);
+        $tempDate = $tempDate->format('F j, Y \a\t H:i:s');
 
-                                if($postsResponse->msg == "success"){
-                                    foreach($postsResponse->data as $post){
-                                        $tempDate = new DateTime($post->created_at);
-                                        $tempDate = $tempDate->format('F j, Y \a\t H:i:s');
-                                        echo <<<EOD
-                                        <tr class="boxPink playPink">
-                                            <td>
-                                                $post->post_id
-                                            </td>
-                                            <td>
-                                                $post->category_id
-                                            </td>
-                                            <td>
-                                                $post->post_title
-                                            </td>
-                                            <td>
-                                                $tempDate
-                                            </td>
-                                            <td>
-                                                <button class="action-btn boxPurple playPurple">View Post</button>
-                                            </td>
-                                        </tr>
-                                        EOD;
-                                    }
-                                }
-                            ?>
+        // Get Category Name
+        $category = array_filter($categoriesResponse->data, function ($item) use ($post) {
+            return $item->category_id == $post->category_id;
+        });
+
+        // Since array_filter returns an array, we need to extract the first element
+        $categoryName = reset($category)->category_name;
+
+        echo <<<EOD
+        <tr class="boxPink playPink">
+            <td>
+                $post->post_id
+            </td>
+            <td>
+                $categoryName
+            </td>
+            <td>
+                $post->post_title
+            </td>
+            <td>
+                $tempDate
+            </td>
+            <td>
+                <button class="action-btn boxPurple playPurple">View Post</button>
+            </td>
+        </tr>
+        EOD;
+    }
+}
+?>
                         </tbody>
                     </table>
                 </div>
@@ -201,37 +210,56 @@ curl_close($curl);
 
         function startModel(intent, errorMsg = "NULL", successMsg = "NULL", categoryId = -1){
             const POST_FORM = `
-                <div class='form-input'>
-                    <p class="label">Title</p>
-                    <input type="text" class="boxBlue neonBlue input" id="post-title" placeholder="Super Cool Title">
-                    <p class="sub-label">This is the title that will be displayed to all viewers</p>
+                <div class='form-input row'>
+                    <div class="form-input-number neonBlue col-3">
+                        Step 1.
+                    </div>
+                    <div class="col-9">
+                        <p  class="label">Title</p>
+                        <input type="text" class="boxBlue neonBlue input" id="post-title" placeholder="Super Cool Title">
+                        <p class="sub-label">This is the title that will be displayed to all viewers</p>
+                    </div>
                 </div>
-                <div class='form-input'>
-                    <p class="label">Categpry</p>
-                    <select class="input boxBlue neonBlue" id="post-select-category">
-                        <option value="NULL" default>--SELECT--</option>
-                        <?php
-                            if($categoriesResponse->msg == "success"){
-                                foreach($categoriesResponse->data as $category){
+                <div class='form-input row'>
+                    <hr/>
+                    <div class="form-input-number neonBlue col-3">
+                        Step 2.
+                    </div>
+                    <div class="col-9">
+                        <p class="label">Category</p>
+                        <select class="input boxBlue neonBlue" id="post-select-category">
+                            <option value="NULL" default>--SELECT--</option>
+                            <?php
+                                if($categoriesResponse->msg == "success"){
+                                    foreach($categoriesResponse->data as $category){
+                                        $tempDate = new DateTime($category->created_at);
+                                        $tempDate = $tempDate->format('F j, Y \a\t H:i:s');
+                                        echo <<<EOD
+                                            <option class="boxBlue playBlue" value="$category->category_id">
+                                                <span>$category->category_name</span><span> | created at: $tempDate</span>
+                                            </option>
+                                        EOD;
+                                    }
+                                }else{
                                     echo <<<EOD
-                                        <option class="boxBlue playBlue" value="$category->category_id">
-                                            <span>$category->category_name</span> | <span>$category->created_at</span>
-                                        </option>
+                                        <p>Whoops! We could not find any categories for you to select. You must have at least one category before creating a post.</p>
                                     EOD;
                                 }
-                            }else{
-                                echo <<<EOD
-                                    <p>Whoops! We could not find any categories for you to select. You must have at least one category before creating a post.</p>
-                                EOD;
-                            }
-                        ?>
-                    </select>
-                    <p class="sub-label">This is the category that viewers will need to select to find your post</p>
+                            ?>
+                        </select>
+                        <p class="sub-label">This is the category that viewers will need to select to find your post</p>
+                    </div>
                 </div>
-                <div class='form-input'>
-                    <p class="label">Content</p>
-                    <textarea class="boxBlue neonBlue input" id="post-content" placeholder="All your content here"></textarea>
-                    <p class="sub-label">This is the content of your post</p>
+                <div class='form-input row'>
+                    <hr/>
+                    <div class="form-input-number neonBlue col-3">
+                        Step 3.
+                    </div>
+                    <div class="col-9">
+                        <p class="label">Content</p>
+                        <textarea class="boxBlue neonBlue input" id="post-content" placeholder="All your content here"></textarea>
+                        <p class="sub-label">This is the content of your post</p>
+                    </div>
                 </div>
             `;
             const CATEGORY_FORM = `

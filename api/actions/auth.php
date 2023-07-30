@@ -12,52 +12,39 @@
         }
 
         public function signUp($fName,$lName,$emailAddress,$memberType,$password){
-            $userExistsresult = json_decode(auth::validateSignup($emailAddress));
-            if($userExistsresult->msg == "success"){
+            if(json_decode(auth::validateSignup($emailAddress))->msg == "success"){
                 $auth = $this->auth_service->createAuth();
-                $createMembershipresult = json_decode(auth::createMembership($memberType));
-
-                if($createMembershipresult->msg == "success"){
-                    $newMembershipid = $createMembershipresult->data[0]->membership_id;
-                    $newMembershipuid = $createMembershipresult->data[0]->membership_uid;
-                    $createMemberresult = json_decode(auth::createMember($fName,$lName,$emailAddress,$newMembershipuid));
-
+                try{
+                    // Create user in Auth table and get returned uuid
+                    $user_metadata = [
+                        'name' => "$fName $lName",
+                        'email' => $emailAddress,
+                    ];
+                    $auth->createUserWithEmailAndPassword($emailAddress, $password, $user_metadata);
+                    $data = $auth->data();
+                    $uuid = $data->id;
+                    // Create member in members table, and validate that the record has been created
+                    $createMemberresult = json_decode(auth::createMember($fName,$lName,$emailAddress,$uuid));
                     if($createMemberresult->msg == "success"){
-                        $newMemberid = $createMemberresult->data[0]->member_id;
-                        $updateMembershipresult = json_decode(auth::updateMembershipuser($newMemberid,$newMembershipid));
-
-                        if($updateMembershipresult->msg == "success"){
-                            try{
-                                $user_metadata = [
-                                    'name' => "$fName $lName",
-                                    'email' => $emailAddress,
-                                    'uid' => $newMemberid
-                                ];
-                                $auth->createUserWithEmailAndPassword($emailAddress, $password, $user_metadata);
-                                $data = $auth->data();
-
-                                http_response_code(200);
-                                return json_encode(array("msg"=>"success", "data"=>$data));
-                                // echo "TEST5";
-                            }
-                            catch(Exception $e){
-                                auth::returnError($auth->getError());
-                                // echo "TEST".$auth->getError();
-                            }
+                        // Create membership in the memberships table, and validate that the record has been created
+                        $createMembershipresult = json_decode(auth::createMembership($memberType,$uuid,$createMemberresult->data[0]->member_id));
+                        if($createMembershipresult->msg == "success"){
+                            http_response_code(200);
+                            return json_encode(array("msg"=>"success", "data"=>$data));
                         }else{
-                            auth::returnError($updateMembershipresult->description);
-                            // echo "TEST1";
+                            http_response_code(200);
+                            return json_encode(array("msg"=>"failed", "description"=>"Could nto create membership"));
                         }
                     }else{
-                        auth::returnError($createMemberresult->description);
-                        // echo "TEST2";
+                        http_response_code(200);
+                        return json_encode(array("msg"=>"failed", "description"=>"Could not create member"));
                     }
-                }else{
-                    auth::returnError(json_encode($createMembershipresult));
-                    // echo "TEST3".json_encode($createMembershipresult);
+                }
+                catch(Exception $e){
+                    http_response_code(200);
+                    return json_encode(array("msg"=>"failed", "description"=>$auth->getError()));
                 }
             }else{
-                // auth::returnError("A member with this email address already exists!");
                 http_response_code(200);
                 return json_encode(array("msg"=>"failed", "description"=>"A member with this email address already exists!"));
             }
@@ -102,6 +89,13 @@
                 echo json_encode(array("msg"=>"failed","description"=>$auth->getError()));
                 exit;
             }
+        }
+        public function deleteUser($userToDelete){
+            // Attempt to remove the user
+            $response = $supabase->auth()->removeUser($userToDelete);
+
+            // Remove the user from users table
+            return auth::removeUser();
         }
 
         public function validateUserbyId($memberId){
@@ -163,14 +157,14 @@
                 return auth::returnError($e->getMessage());
             }
         }
-        private function createMembership($memberType){
+        private function createMembership($memberType, $uuid, $memberId){
             $db = $this->service->initializeDatabase('memberships', 'membership_id');
-            $membershipUid = auth::generateMembershipUid();
             $startDate = date("Y-m-d H:i:s.u");
 
             $newMember = [
-                'membership_uid' => $membershipUid,
+                'member_id' => $memberId,
                 'membership_status' => 'active',
+                'membership_uid' => $uuid,
                 'membership_type' => $memberType,
                 'membership_start_date' => $startDate
             ];
@@ -200,6 +194,45 @@
                 if(!empty($data)){
                     http_response_code(200);
                     return json_encode(array("msg"=>"success","data"=>$data));
+                }else{
+                    return auth::returnError("Could not update membership");
+                }
+            }
+            catch(Exception $e){
+                return auth::returnError($e->getMessage());
+            }
+        }
+        private function updateUID($user_id,$membership_id, $uuid){
+            // Update Membership table
+            $db = $this->service->initializeDatabase('memberships', 'membership_id');
+
+            $updateMembershipuser = [
+                'membership_uid' => $uuid,
+            ];
+            
+            try{
+                $data = $db->update($membership_id, $updateMembershipuser);
+                if(!empty($data)){
+                    // Update users table
+                    $db = $this->service->initializeDatabase('members', 'member_id');
+
+                    $updateMemberuser = [
+                        'membership_uid' => $uuid,
+                    ];
+                    
+                    try{
+                        $data = $db->update($user_id, $updateMemberuser);
+                        if(!empty($data)){
+                            http_response_code(200);
+                            return json_encode(array("msg"=>"success","data"=>$data));
+                        }else{
+                            return auth::returnError("Could not update membership");
+                        }
+                    }
+                    catch(Exception $e){
+                        return auth::returnError($e->getMessage());
+                    }
+
                 }else{
                     return auth::returnError("Could not update membership");
                 }
@@ -253,6 +286,10 @@
                 return json_encode(array("msg"=>"failed","description"=>$e->getMessage()));
                 exit;
             }
+        }
+
+        private function removeUser(){
+
         }
 
         private function returnError($description){

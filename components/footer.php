@@ -1,20 +1,23 @@
 <style>
     footer{
-        position: absolute;
-        bottom:0;
         width: 100%;
         max-width:100%;
         background-color: black;
         padding: 15px;
-
+        /* position: fixed; */
+        bottom: 0;
+        left: 0;
+        right: 0;
     }
 #creator-credit{
-
+  display: flex;
+  align-items: center;
+  justify-content:center;
 }
 .footer-builtby{
     color: white;
     font-weight: bold;
-    font-size:25px;
+    font-size:15px;
 }
 .footer-builtby a{
     color: white;
@@ -26,9 +29,9 @@
 #heart-svg {
     cursor: pointer;
     overflow: visible;
-    width: 80px;
+    width: 40px;
     margin: 0 auto;
-    padding-bottom: 7rem;
+    padding-bottom: 4rem;
   }
   
   svg #heart {
@@ -204,6 +207,28 @@
     opacity: 1;
     transition: .1s opacity .3s;
   }
+
+  .contact-link{
+    color: white;
+    font-size: 20px;
+    text-decoration:none;
+  }
+  #contact-heading{
+    font-size: 50px;
+  }
+  .social-list{
+    list-style:none;
+  }
+  .social-list li{
+    padding: 20px;
+  }
+
+  .D_U{
+    font-size: 50px;
+  }
+  .WTF{
+      font-size: 100px;
+  }
   
   @keyframes animateCircle {
     40% {
@@ -272,8 +297,45 @@
     }
   }
     </style>
-<footer>
-    <div id="creator-credit">
+<footer class="container-fluid row">
+    <div class="col-lg-6 col-md-12 col-sm-12" id="creator-credit">
+      <div class="col-12 row" id="logo-container">
+        <div class="col-12 row" id="logo">
+          <div class="D_U neonPink col-12" style="display:flex;align-items:center;justify-content:center;padding: 30px 30px 0 30px;">Dear Universe...</div>
+          <div class="WTF neonPink col-12" style="display:flex;align-items:center;justify-content:center;padding: 0 30px 30px 30px;">WTF???</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-12 col-sm-12">
+      <h3 id="contact-heading">Contact Me</h3>
+      <div class="contact-info row">
+        <div class="col-lg-4 col-md-12 col-sm-12">
+          <ul class="social-list">
+            <li><a class="contact-link playPink" href="">(000)-000-0000</a></li>
+            <li><a class="contact-link playPink" href="">hennars1@gmail.com</a></li>
+            <li><a class="contact-link playPink" href="">support@duwtf.co.za</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4 col-md-12 col-sm-12">
+          <ul class="social-list">
+            <li><a class="contact-link playPink" href="#">Instagram</a></li>
+            <li><a class="contact-link playPink" href="#">Facebook</a></li>
+            <li><a class="contact-link playPink" href="#">Twitter</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4 col-md-12 col-sm-12">
+          <ul class="social-list">
+            <li><a class="contact-link playPink" href="#">Threads</a></li>
+            <li><a class="contact-link playPink" href="#">Reddit</a></li>
+            <li><a class="contact-link playPink" href="#">Discord</a></li>
+          </ul>
+        </div> 
+      </div>
+    </div>
+
+    <!-- Creator Credit -->
+    <div class="col-12" id="creator-credit">
+        <p>Dear Universe..WTF? &#169; 2023 | </p>
         <p class='footer-builtby'>Made with <input type="checkbox" class="checkbox" id="checkbox" />
         <label for="checkbox">
             <svg id="heart-svg" viewBox="467 350 58 57" xmlns="http://www.w3.org/2000/svg">
@@ -318,6 +380,7 @@
                 </g>
             </svg>
             </label>
-        by <a href="https://www.theshekharmaharaj.com">Shekhar Maharaj</a></p>
+        by <a class="playRed" href="https://www.theshekharmaharaj.com">Shekhar Maharaj</a></p>
     </div>
+
 </footer>

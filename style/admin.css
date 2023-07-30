@@ -15,6 +15,35 @@ body{
 input:focus{
     outline: none !important;
 }
+.close{
+  background-color: transparent !important;
+  border: 1px solid white !important;
+  border-radius: 20px !important;
+  color: white !important;
+  width: 50px !important;
+  transition: all 1s;
+}
+.close:hover{
+  color: #fff !important;
+  text-shadow:
+  0 0 7px #fff,
+  0 0 10px #fff,
+  0 0 21px #fff,
+  0 0 42px #FF000F,
+  0 0 82px #FF000F,
+  0 0 92px #FF000F,
+  0 0 102px #FF000F,
+  0 0 151px #FF000F !important;
+  box-shadow:
+  0 0 7px #fff,
+  0 0 10px #fff,
+  0 0 21px #fff,
+  0 0 42px #FF000F,
+  0 0 82px #FF000F,
+  0 0 92px #FF000F,
+  0 0 102px #FF000F,
+  0 0 151px #FF000F !important;
+}
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
     color: white;
         text-shadow:
