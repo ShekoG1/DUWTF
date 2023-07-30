@@ -6,7 +6,7 @@ $curl = curl_init();
 
 // Get All Posts
 curl_setopt_array($curl, array(
-CURLOPT_URL => 'http://localhost/projects/DearUniverseWTF/api/endpoints/posts/getAllposts.php',
+CURLOPT_URL => 'https://duwtf-de7cb1deecd8.herokuapp.com/api/endpoints/posts/getAllposts.php',
 CURLOPT_RETURNTRANSFER => true,
 CURLOPT_ENCODING => '',
 CURLOPT_MAXREDIRS => 10,
@@ -20,7 +20,7 @@ $postsResponse = json_decode(curl_exec($curl));
 // Get All Categories
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => 'http://localhost/projects/DearUniverseWTF/api/endpoints/categories/getAllcategories.php',
+  CURLOPT_URL => 'https://duwtf-de7cb1deecd8.herokuapp.com/api/endpoints/categories/getAllcategories.php',
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => '',
   CURLOPT_MAXREDIRS => 10,
@@ -331,7 +331,7 @@ if ($postsResponse->msg == "success") {
             redirect: 'follow'
             };
 
-            fetch("http://localhost/projects/DearUniverseWTF/api/endpoints/posts/createPost.php", requestOptions)
+            fetch("https://duwtf-de7cb1deecd8.herokuapp.com/api/endpoints/posts/createPost.php", requestOptions)
             .then(response => response.text())
             .then(result => success("Post Created Successfully"))
             .catch(error => console.log('error', error));
@@ -349,7 +349,7 @@ if ($postsResponse->msg == "success") {
             redirect: 'follow'
             };
 
-            fetch("http://localhost/projects/DearUniverseWTF/api/endpoints/categories/createCategory.php", requestOptions)
+            fetch("https://duwtf-de7cb1deecd8.herokuapp.com/api/endpoints/categories/createCategory.php", requestOptions)
             .then(response => response.text())
             .then(result => success("Category Created Success"))
             .catch(error => console.log('error', error));
@@ -369,7 +369,7 @@ if ($postsResponse->msg == "success") {
             redirect: 'follow'
             };
 
-            fetch("http://localhost/projects/DearUniverseWTF/api/endpoints/categories/renameCategory.php", requestOptions)
+            fetch("https://duwtf-de7cb1deecd8.herokuapp.com/api/endpoints/categories/renameCategory.php", requestOptions)
             .then(response => response.text())
             .then(result => success(result))
             .catch(error => console.log('error', error));

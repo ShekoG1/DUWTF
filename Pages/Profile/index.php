@@ -13,7 +13,7 @@
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-        CURLOPT_URL => 'http://localhost/projects/DearUniverseWTF/api/endpoints/auth/validateUserbyId.php',
+        CURLOPT_URL => 'https://duwtf-de7cb1deecd8.herokuapp.com/api/endpoints/auth/validateUserbyId.php',
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,
@@ -59,7 +59,7 @@
     <?php
         $curl = curl_init();
         curl_setopt_array($curl, array(
-        CURLOPT_URL => 'http://localhost/projects/DearUniverseWTF/components/nav.php',
+        CURLOPT_URL => 'https://duwtf-de7cb1deecd8.herokuapp.com/components/nav.php',
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,
@@ -154,7 +154,7 @@
     <script>
         const cookieSet = <?php echo $cookieSet; ?>;
         if(!cookieSet){
-            window.location.href = "http://localhost/projects/DearUniverseWTF/";
+            window.location.href = "https://duwtf-de7cb1deecd8.herokuapp.com/";
         }
         setProfile(<?php echo $cookieSet; ?>);
     </script>

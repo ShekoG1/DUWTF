@@ -9,7 +9,7 @@ if(!isset($_COOKIE["DUWTF_ADMIN"])){
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => 'http://localhost/projects/DearUniverseWTF/api/endpoints/admin/getAllsubscribers.php',
+  CURLOPT_URL => 'https://duwtf-de7cb1deecd8.herokuapp.com/api/endpoints/admin/getAllsubscribers.php',
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => '',
   CURLOPT_MAXREDIRS => 10,
@@ -114,7 +114,7 @@ curl_close($curl);
 
         const kick = <?php echo json_encode($kick); ?>;
         if(kick){
-            document.location.href = "http://localhost/projects/DearUniverseWTF/Admin/"
+            document.location.href = "https://duwtf-de7cb1deecd8.herokuapp.com/Admin/"
         }
     </script>
 </body>

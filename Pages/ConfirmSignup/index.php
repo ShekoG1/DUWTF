@@ -43,7 +43,7 @@
         </div>
         
         <div class="message content">
-            <p class="neonText">Congrats on signing up for the coolest blog ever!<br/>You may now sign in <a class="neonBlue" href="http://localhost/projects/DearUniverseWTF/Pages/SignIn">here</a></p>
+            <p class="neonText">Congrats on signing up for the coolest blog ever!<br/>You may now sign in <a class="neonBlue" href="https://duwtf-de7cb1deecd8.herokuapp.com/Pages/SignIn">here</a></p>
         </div>
     </div>
     <?php

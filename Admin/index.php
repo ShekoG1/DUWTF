@@ -62,7 +62,7 @@
             redirect: 'follow'
             };
 
-            fetch("http://localhost/projects/DearUniverseWTF/api/endpoints/admin/authorize.php", requestOptions)
+            fetch("https://duwtf-de7cb1deecd8.herokuapp.com/api/endpoints/admin/authorize.php", requestOptions)
             .then(response => response.text())
             .then(result => success(JSON.parse(result)))
             .catch(error => console.log('error', error));
@@ -77,7 +77,7 @@
                 redirect: 'follow'
                 };
 
-                fetch("http://localhost/projects/DearUniverseWTF/api/endpoints/email/sendOTP.php", requestOptions)
+                fetch("https://duwtf-de7cb1deecd8.herokuapp.com/api/endpoints/email/sendOTP.php", requestOptions)
                 .then(response => response.text())
                 .then(result => {
                     alert("You've got mail! Check your email for your admin OTP");
