@@ -12,6 +12,11 @@
     // General Globals
     $GLOBALS['site_url'] = "localhost/projects/DearUniverseWTF/";
 
+    // CORS
+    header('Access-Control-Allow-Origin: *');
+    header('Access-Control-Allow-Methods: GET, POST');
+    header("Access-Control-Allow-Headers: X-Requested-With");
+
     // Global functions
     function throwError($description){
         http_response_code(200);
