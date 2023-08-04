@@ -66,7 +66,7 @@
 
                 <?php
                 $postNumbercount = 0;
-                    foreach($postResponse as $post){
+                    foreach($postResponse->data as $post){
                         $postNumbercount++;
                         $data = json_encode($post);
                         echo <<<EOD
@@ -76,7 +76,7 @@
                                     0$postNumbercount.
                                 </div>
                                 <div class="blog-title">
-                                    <h5>$data</h5>
+                                    <h5>$post->post_title</h5>
                                 </div>
                             </div>
                         </div>
