@@ -69,9 +69,27 @@
                     foreach($postResponse->data as $post){
                         $postNumbercount++;
                         $data = json_encode($post);
+                        $color = "";
+                        switch ($postNumbercount) {
+                            case 1:
+                                $color = "boxRed playRed";
+                                break;
+                            case 2:
+                                $color = "boxBlue playBlue";
+                                break;
+                            case 3:
+                                $color = "boxPurple playPurple";
+                                break;
+                            case 4:
+                                $color = "boxLime playLime";
+                                break; 
+                            default:
+                                # code...
+                                break;
+                        }
                         echo <<<EOD
                         <div class="col-lg-5 col-md-12 col-sm-12 sticky-note-container">
-                            <div class="sticky-note boxBlue playBlue">
+                            <div class="sticky-note $color">
                                 <div class="number-container">
                                     0$postNumbercount.
                                 </div>
@@ -84,51 +102,6 @@
                     }
                 
                 ?>
-
-                <!--<div class="col-lg-5 col-md-12 col-sm-12 sticky-note-container">
-                    <div class="sticky-note boxRed playRed">
-                        <div class="number-container">
-                            01.
-                        </div>
-                        <div class="blog-title">
-                            <h5>Cudddle with the cat</h5>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-5 col-md-12 col-sm-12 sticky-note-container">
-                    <div class="sticky-note boxBlue playBlue">
-                        <div class="number-container">
-                            02.
-                        </div>
-                        <div class="blog-title">
-                            <h5>Latest blog </h5>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-5 col-md-12 col-sm-12 sticky-note-container">
-                    <div class="sticky-note boxPurple playPurple">
-                        <div class="number-container">
-                            03.
-                        </div>
-                        <div class="blog-title">
-                            <h5>Latest blog </h5>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-5 col-md-12 col-sm-12 sticky-note-container">
-                    <div class="sticky-note boxLime playLime">
-                        <div class="number-container">
-                            04.
-                        </div>
-                        <div class="blog-title">
-                            <h5>Latest blog </h5>
-                        </div>
-                    </div>
-                </div>-->
-
             </div>
         </div>
     </div>
