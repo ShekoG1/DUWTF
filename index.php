@@ -1,3 +1,22 @@
+
+<?php
+    $postCurl = curl_init();
+    
+    curl_setopt_array($postCurl, array(
+      CURLOPT_URL => 'https://duwtf-de7cb1deecd8.herokuapp.com/api/endpoints/posts/getLatest4posts.php',
+      CURLOPT_RETURNTRANSFER => true,
+      CURLOPT_ENCODING => '',
+      CURLOPT_MAXREDIRS => 10,
+      CURLOPT_TIMEOUT => 0,
+      CURLOPT_FOLLOWLOCATION => true,
+      CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+      CURLOPT_CUSTOMREQUEST => 'POST'
+    ));
+    
+    $postResponse = json_decode(curl_exec($postCurl));
+    
+    curl_close($postCurl);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,8 +61,30 @@
                     <p>Join me as I share details of my crazy day to day activities...</p>
                 </div>
             </div>
+
             <div class="col-sm-12 col-md-12 col-lg-6 row">
-                <div class="col-lg-5 col-md-12 col-sm-12 sticky-note-container">
+
+                <?php
+                $postNumbercount = 0;
+                    foreach($postResponse as $post){
+                        $postNumbercount++;
+                        echo <<<EOD
+                        <div class="col-lg-5 col-md-12 col-sm-12 sticky-note-container">
+                            <div class="sticky-note boxBlue playBlue">
+                                <div class="number-container">
+                                    0$postNumbercount.
+                                </div>
+                                <div class="blog-title">
+                                    <h5>$post->post_title</h5>
+                                </div>
+                            </div>
+                        </div>
+                        EOD;
+                    }
+                
+                ?>
+
+                <!--<div class="col-lg-5 col-md-12 col-sm-12 sticky-note-container">
                     <div class="sticky-note boxRed playRed">
                         <div class="number-container">
                             01.
@@ -85,7 +126,8 @@
                             <h5>Latest blog </h5>
                         </div>
                     </div>
-                </div>
+                </div>-->
+
             </div>
         </div>
     </div>
