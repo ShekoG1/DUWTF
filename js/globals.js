@@ -81,7 +81,8 @@ function setCookie(data){
     const cookieName = "DUWTF_USER";
     const cookieValue = JSON.stringify({
 		jwt: data.jwt,
-		token: data.token
+		token: data.token,
+		uid: data.uid
 	});
     var expiryTime = new Date();
     expiryTime.setTime(expiryTime.getTime() + (5 * 24 * 60 * 60 * 1000)); // 5 days in milliseconds

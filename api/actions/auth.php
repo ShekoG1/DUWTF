@@ -33,11 +33,11 @@
                             return json_encode(array("msg"=>"success", "data"=>$data));
                         }else{
                             http_response_code(200);
-                            return json_encode(array("msg"=>"failed", "description"=>"Could nto create membership"));
+                            return json_encode(array("msg"=>"failed", "description"=>"Could not create membership", "error"=>$createMembershipresult));
                         }
                     }else{
                         http_response_code(200);
-                        return json_encode(array("msg"=>"failed", "description"=>"Could not create member"));
+                        return json_encode(array("msg"=>"failed", "description"=>"Could not create member", "error"=>$createMemberresult));
                     }
                 }
                 catch(Exception $e){
@@ -68,13 +68,15 @@
                     $f_name = $name[0];
                     $l_name = $name[1];
                     $emailAddress = $token->email;
+                    $uid = $token->id;
 
                     http_response_code(200);
                     echo json_encode(array(
                         "msg"=>"success",
                         "data"=>array(
                             "jwt"=>$data->access_token,
-                            "token"=>$token->user_metadata
+                            "token"=>$token->user_metadata,
+                            "uid" =>$uid
                         ),
                     ));
                     exit;
@@ -90,12 +92,23 @@
                 exit;
             }
         }
-        public function deleteUser($userToDelete){
+        public function deleteUser($userToDelete,$token){
             // Attempt to remove the user
-            $response = $supabase->auth()->removeUser($userToDelete);
+            // DELETE FUNCTION NOT AVAILABLE IN PHP SUPABASE
+            // INSTEAD UPDATE EMAIL TO NULL
+            $auth = $this->auth_service->createAuth();
+            
+            try{
+                //the parameters 2 (email) and 3(password) are null because this data will not be changed
+                $data = $auth->updateUser($token, "null@duwtf.co.za", "NULL_DUWTF_", ['null'=>'user_deleted']);
+                return json_encode($data); // show all user data returned
+            }
+            catch(Exception $e){
+                return $auth->getError();
+            }
 
             // Remove the user from users table
-            return auth::removeUser();
+            return auth::removeUser($userToDelete);
         }
 
         public function validateUserbyId($memberId){
@@ -288,8 +301,39 @@
             }
         }
 
-        private function removeUser(){
+        private function removeUser($userToDelete){
+            $db = $this->service->initializeDatabase('members', 'member_id');
 
+            try{
+                $data = $db->findBy("membership_uid", "$userToDelete")->getResult();
+                if(!empty($data)){
+                    try{
+                        $data = $db->delete($data[0]->member_id);
+                        if(!empty($data)){
+                            http_response_code(200);
+                            return json_encode(array("msg"=>"failed","description"=>"Could not find record specified"));
+                            exit;
+                        }else{
+                            http_response_code(200);
+                            return json_encode(array("msg"=>"failed","description"=>"Could not delete member"));
+                            exit;
+                        }
+                    }catch(Exception $e){
+                        http_response_code(200);
+                        return json_encode(array("msg"=>"failed","description"=>$e->getMessage()));
+                        exit;
+                    }
+                }else{
+                    http_response_code(200);
+                    return json_encode(array("msg"=>"success","data"=>"No Member with that UID found"));
+                    exit;
+                }
+            }
+            catch(Exception $e){
+                http_response_code(200);
+                return json_encode(array("msg"=>"failed","description"=>$e->getMessage()));
+                exit;
+            }
         }
 
         private function returnError($description){
