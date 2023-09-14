@@ -3,7 +3,7 @@
     $postCurl = curl_init();
     
     curl_setopt_array($postCurl, array(
-      CURLOPT_URL => 'https://duwtf-de7cb1deecd8.herokuapp.com/api/endpoints/posts/getLatest4posts.php',
+      CURLOPT_URL => 'http://localhost/projects/DearUniverseWTF/api/endpoints/posts/getLatest4posts.php',
       CURLOPT_RETURNTRANSFER => true,
       CURLOPT_ENCODING => '',
       CURLOPT_MAXREDIRS => 10,

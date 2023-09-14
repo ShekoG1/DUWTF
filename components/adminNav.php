@@ -20,7 +20,7 @@
         </div>
         <div class="nav-item boxPink playPink">
             <div class="nav-icon">
-                <a href="https://duwtf-de7cb1deecd8.herokuapp.com/Admin/Dashboard/">
+                <a href="http://localhost/projects/DearUniverseWTF/Admin/Dashboard/">
                     <svg
                     width="24"
                     height="24"
@@ -50,12 +50,12 @@
                 </a>
             </div>
             <div class="nav-route">
-                <a href="https://duwtf-de7cb1deecd8.herokuapp.com/Admin/Dashboard/">Dashboard</a>
+                <a href="http://localhost/projects/DearUniverseWTF/Admin/Dashboard/">Dashboard</a>
             </div>
         </div>
         <div class="nav-item boxRed playRed">
             <div class="nav-icon">
-                <a href="https://duwtf-de7cb1deecd8.herokuapp.com/Admin/Content/">
+                <a href="http://localhost/projects/DearUniverseWTF/Admin/Content/">
                     <svg
                     width="24"
                     height="24"
@@ -91,12 +91,12 @@
                 </a>
             </div>
             <div class="nav-route">
-                <a href="https://duwtf-de7cb1deecd8.herokuapp.com/Admin/Content/">Content</a>
+                <a href="http://localhost/projects/DearUniverseWTF/Admin/Content/">Content</a>
             </div>
         </div>
         <div class="nav-item boxBlue playBlue">
             <div class="nav-icon">
-                <a href="https://duwtf-de7cb1deecd8.herokuapp.com/Admin/Users">
+                <a href="http://localhost/projects/DearUniverseWTF/Admin/Users">
                     <svg
                     width="24"
                     height="24"
@@ -118,12 +118,12 @@
                 </a>
             </div>
             <div class="nav-route">
-                <a href="https://duwtf-de7cb1deecd8.herokuapp.com/Admin/Users">Users</a>
+                <a href="http://localhost/projects/DearUniverseWTF/Admin/Users">Users</a>
             </div>
         </div>
         <div class="nav-item boxLime playLime">
             <div class="nav-icon">
-                <a href="https://duwtf-de7cb1deecd8.herokuapp.com/Admin/Subscriptions">
+                <a href="http://localhost/projects/DearUniverseWTF/Admin/Subscriptions">
                     <svg
                     width="24"
                     height="24"
@@ -141,12 +141,12 @@
                 </a>
             </div>
             <div class="nav-route">
-                <a href="https://duwtf-de7cb1deecd8.herokuapp.com/Admin/Subscriptions">Subscriptions</a>
+                <a href="http://localhost/projects/DearUniverseWTF/Admin/Subscriptions">Subscriptions</a>
             </div>
         </div>
         <div class="nav-item boxPurple playPurple">
             <div class="nav-icon">
-                <a href="https://duwtf-de7cb1deecd8.herokuapp.com/Admin/News">
+                <a href="http://localhost/projects/DearUniverseWTF/Admin/News">
                     <svg
                     width="24"
                     height="24"
@@ -164,7 +164,7 @@
                 </a>
             </div>
             <div class="nav-route">
-                <a href="https://duwtf-de7cb1deecd8.herokuapp.com/Admin/News">News</a>
+                <a href="http://localhost/projects/DearUniverseWTF/Admin/News">News</a>
             </div>
         </div>
     </div>

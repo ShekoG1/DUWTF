@@ -11,7 +11,7 @@
     $postCurl = curl_init();
     
     curl_setopt_array($postCurl, array(
-      CURLOPT_URL => 'https://duwtf-de7cb1deecd8.herokuapp.com/api/endpoints/posts/getLatestpost.php',
+      CURLOPT_URL => 'http://localhost/projects/DearUniverseWTF/api/endpoints/posts/getLatestpost.php',
       CURLOPT_RETURNTRANSFER => true,
       CURLOPT_ENCODING => '',
       CURLOPT_MAXREDIRS => 10,
@@ -37,7 +37,7 @@
     $postLikecurl = curl_init();
     
     curl_setopt_array($postLikecurl, array(
-      CURLOPT_URL => 'https://duwtf-de7cb1deecd8.herokuapp.com/api/endpoints/posts/getPostlikes.php',
+      CURLOPT_URL => 'http://localhost/projects/DearUniverseWTF/api/endpoints/posts/getPostlikes.php',
       CURLOPT_RETURNTRANSFER => true,
       CURLOPT_ENCODING => '',
       CURLOPT_MAXREDIRS => 10,
@@ -62,7 +62,7 @@
     $postCommentcurl = curl_init();
     
     curl_setopt_array($postCommentcurl, array(
-      CURLOPT_URL => 'https://duwtf-de7cb1deecd8.herokuapp.com/api/endpoints/posts/getPostcomments.php',
+      CURLOPT_URL => 'http://localhost/projects/DearUniverseWTF/api/endpoints/posts/getPostcomments.php',
       CURLOPT_RETURNTRANSFER => true,
       CURLOPT_ENCODING => '',
       CURLOPT_MAXREDIRS => 10,
@@ -108,7 +108,7 @@ $postContent = $postResponsedata[0]->post_content;
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-        CURLOPT_URL => 'https://duwtf-de7cb1deecd8.herokuapp.com/components/nav.php',
+        CURLOPT_URL => 'http://localhost/projects/DearUniverseWTF/components/nav.php',
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,
@@ -145,7 +145,7 @@ $postContent = $postResponsedata[0]->post_content;
                     $curl = curl_init();
 
                     curl_setopt_array($curl, array(
-                    CURLOPT_URL => 'https://duwtf-de7cb1deecd8.herokuapp.com/components/message_container.php',
+                    CURLOPT_URL => 'http://localhost/projects/DearUniverseWTF/components/message_container.php',
                     CURLOPT_RETURNTRANSFER => true,
                     CURLOPT_ENCODING => '',
                     CURLOPT_MAXREDIRS => 10,
@@ -204,7 +204,7 @@ $postContent = $postResponsedata[0]->post_content;
             redirect: 'follow'
             };
 
-            fetch("https://duwtf-de7cb1deecd8.herokuapp.com/api/endpoints/posts/makeComment.php", requestOptions)
+            fetch("http://localhost/projects/DearUniverseWTF/api/endpoints/posts/makeComment.php", requestOptions)
             .then(response => response.text())
             .then(result => {
                 response = JSON.parse(result);

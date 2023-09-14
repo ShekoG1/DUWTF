@@ -68,7 +68,7 @@
 
                 </div>
                 <div class="col-12 neonBlue" id="opposite-auth">
-                    <p>Or you can <a href="https://duwtf-de7cb1deecd8.herokuapp.com/Pages/SignUp">Signup here</a></p>
+                    <p>Or you can <a href="http://localhost/projects/DearUniverseWTF/Pages/SignUp">Signup here</a></p>
                 </div>
             </div>
         </div>
@@ -98,7 +98,7 @@
                 redirect: 'follow'
                 };
 
-                fetch("https://duwtf-de7cb1deecd8.herokuapp.com/api/endpoints/auth/signIn.php", requestOptions)
+                fetch("http://localhost/projects/DearUniverseWTF/api/endpoints/auth/signIn.php", requestOptions)
                 .then(response => response.text())
                 .then(result => {
                     // Show success

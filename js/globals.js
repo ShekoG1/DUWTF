@@ -93,8 +93,8 @@ function setProfile(cookieSet){
 	let navAction = document.querySelector("#nav-action");
 
 	if(cookieSet){
-		navAction.innerHTML = `<a href="https://duwtf-de7cb1deecd8.herokuapp.com/Pages/Profile">Profile</a>`;
+		navAction.innerHTML = `<a href="http://localhost/projects/DearUniverseWTF/Pages/Profile">Profile</a>`;
 	}else{
-		navAction.innerHTML = `<a href="https://duwtf-de7cb1deecd8.herokuapp.com/Pages/SignUp">SignUp</a>/<a href="https://duwtf-de7cb1deecd8.herokuapp.com/Pages/SignIn">SignIn</a>`;
+		navAction.innerHTML = `<a href="http://localhost/projects/DearUniverseWTF/Pages/SignUp">SignUp</a>/<a href="http://localhost/projects/DearUniverseWTF/Pages/SignIn">SignIn</a>`;
 	}
 }
